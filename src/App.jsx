@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import CustomerSegmentation from "./pages/CustomerSegmentation";
 import RegionalSales from "./pages/RegionalSales";
 import ProductRecommendation from "./pages/ProductRecommendation";
+import MarketBasket from "./pages/MarketBasket";
 import SentimentAnalysis from "./pages/SentimentAnalysis";
 import TopicMining from "./pages/TopicMining";
 
@@ -24,6 +25,10 @@ export default function App() {
             <Route
               path="/customer-segmentation"
               element={<CustomerSegmentation />}
+            />
+            <Route
+              path="/market-basket"
+              element={<MarketBasket />}
             />
             <Route path="/regional-sales" element={<RegionalSales />} />
             <Route

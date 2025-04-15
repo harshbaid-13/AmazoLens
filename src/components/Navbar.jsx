@@ -12,9 +12,14 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
     },
     { name: "Regional Sales", path: "/regional-sales", icon: "🌎" },
     {
+      name: "Market Basket Analysis",
+      path: "/market-basket",
+      icon: "🛒",
+    },
+    {
       name: "Product Recommendations",
       path: "/product-recommendation",
-      icon: "🛒",
+      icon: "👌",
     },
     { name: "Sentiment Analysis", path: "/sentiment-analysis", icon: "😊" },
     { name: "Topic Mining", path: "/topic-mining", icon: "📝" },
