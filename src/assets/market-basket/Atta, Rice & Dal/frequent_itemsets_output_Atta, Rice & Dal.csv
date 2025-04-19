@@ -1,0 +1,76 @@
+itemsets,support,support_count
+frozenset({'Arhar Dal'}),0.13630814433070682,260262
+frozenset({'Atta'}),0.24798034948791875,473485
+frozenset({'Basmati Rice'}),0.12211703891084208,233166
+frozenset({'Besan'}),0.11656807367894562,222571
+frozenset({'Black Masoor Dal'}),0.022152914712482947,42298
+frozenset({'Chana Dal'}),0.07679883102497427,146637
+frozenset({'Daliya'}),0.03291617893907137,62849
+frozenset({'Kabuli Chana'}),0.06303980642779144,120366
+frozenset({'Kala Chana'}),0.05743375415386791,109662
+frozenset({'Maida'}),0.05069748319467467,96800
+frozenset({'Malka Masoor'}),0.025467629290366167,48627
+frozenset({'Masoor Dal'}),0.0327810554817963,62590
+frozenset({'Mix Dal'}),0.01065380375150901,20342
+frozenset({'Mogra Basmati Rice'}),0.0439695919847698,83954
+frozenset({'Moong (Sabut)'}),0.02693775155614563,51434
+frozenset({'Moong Dal (Chilka)'}),0.03131983669963574,59801
+frozenset({'Moong Dal (Dhuli)'}),0.07555234331832834,144257
+frozenset({'Multigrain Atta'}),0.02671149832535948,51002
+frozenset({'Poha'}),0.029850761902517328,56996
+frozenset({'Rajma Chitra'}),0.05542942287095448,105835
+frozenset({'Red Rajma'}),0.011447784996582633,21858
+frozenset({'Sharbati Atta'}),0.031044352441780384,59275
+frozenset({'Small Sabudana'}),0.016522770659355337,31548
+frozenset({'Sooji'}),0.12056259541784835,230198
+frozenset({'Soya Chunks'}),0.02145320564690355,40962
+frozenset({'Soya Mini Chunks'}),0.017095736016948044,32642
+frozenset({'Thick Poha'}),0.09428055924351814,180016
+frozenset({'Urad (Sabut)'}),0.01475254862218591,28168
+frozenset({'Urad Dal (Chilka)'}),0.014048125947631804,26823
+frozenset({'Urad Dal (Dhuli)'}),0.02620242855609064,50030
+frozenset({'White Dried Peas'}),0.011632663215257428,22211
+"frozenset({'Arhar Dal', 'Atta'})",0.028559756777776904,54531
+"frozenset({'Basmati Rice', 'Arhar Dal'})",0.014826395162789724,28309
+"frozenset({'Arhar Dal', 'Besan'})",0.020405736985856553,38962
+"frozenset({'Arhar Dal', 'Chana Dal'})",0.02794122653342865,53350
+"frozenset({'Kabuli Chana', 'Arhar Dal'})",0.017550861150172962,33511
+"frozenset({'Arhar Dal', 'Kala Chana'})",0.015588952348031938,29765
+"frozenset({'Arhar Dal', 'Malka Masoor'})",0.01040084006986616,19859
+"frozenset({'Arhar Dal', 'Masoor Dal'})",0.012028606369133193,22967
+"frozenset({'Arhar Dal', 'Moong Dal (Dhuli)'})",0.025555616657894117,48795
+"frozenset({'Arhar Dal', 'Rajma Chitra'})",0.014333037423436588,27367
+"frozenset({'Sooji', 'Arhar Dal'})",0.020417782875458593,38985
+"frozenset({'Arhar Dal', 'Thick Poha'})",0.015089833531043043,28812
+"frozenset({'Basmati Rice', 'Atta'})",0.020763447533604103,39645
+"frozenset({'Atta', 'Besan'})",0.021002794122653344,40102
+"frozenset({'Atta', 'Chana Dal'})",0.01619543670277815,30923
+"frozenset({'Kabuli Chana', 'Atta'})",0.012325563734540017,23534
+"frozenset({'Atta', 'Kala Chana'})",0.01189767278650232,22717
+"frozenset({'Atta', 'Mogra Basmati Rice'})",0.011678751836343496,22299
+"frozenset({'Atta', 'Moong Dal (Dhuli)'})",0.012839870847114092,24516
+"frozenset({'Atta', 'Rajma Chitra'})",0.010024275086219765,19140
+"frozenset({'Sooji', 'Atta'})",0.018849198555540715,35990
+"frozenset({'Atta', 'Thick Poha'})",0.014987181602260438,28616
+"frozenset({'Chana Dal', 'Besan'})",0.015128589871501782,28886
+"frozenset({'Kabuli Chana', 'Besan'})",0.012827301223181528,24492
+"frozenset({'Besan', 'Kala Chana'})",0.01118382289399879,21354
+"frozenset({'Moong Dal (Dhuli)', 'Besan'})",0.012386840651211267,23651
+"frozenset({'Rajma Chitra', 'Besan'})",0.010746504728011669,20519
+"frozenset({'Sooji', 'Besan'})",0.025865143647233503,49386
+"frozenset({'Thick Poha', 'Besan'})",0.015043221175626452,28723
+"frozenset({'Kabuli Chana', 'Chana Dal'})",0.013820301513854083,26388
+"frozenset({'Chana Dal', 'Kala Chana'})",0.013679416978943261,26119
+"frozenset({'Moong Dal (Dhuli)', 'Chana Dal'})",0.017275900626648126,32986
+"frozenset({'Chana Dal', 'Rajma Chitra'})",0.01217787065333239,23252
+"frozenset({'Sooji', 'Chana Dal'})",0.012232862758037357,23357
+"frozenset({'Kabuli Chana', 'Kala Chana'})",0.014556671982570121,27794
+"frozenset({'Kabuli Chana', 'Moong Dal (Dhuli)'})",0.01105498424869001,21108
+"frozenset({'Kabuli Chana', 'Rajma Chitra'})",0.018010176158042072,34388
+"frozenset({'Sooji', 'Kabuli Chana'})",0.010373605884678937,19807
+"frozenset({'Rajma Chitra', 'Kala Chana'})",0.010977995302103055,20961
+"frozenset({'Sooji', 'Kala Chana'})",0.010573672398938914,20189
+"frozenset({'Sooji', 'Maida'})",0.012951426259515599,24729
+"frozenset({'Masoor Dal', 'Moong Dal (Dhuli)'})",0.010887912997253014,20789
+"frozenset({'Sooji', 'Moong Dal (Dhuli)'})",0.012344941904769386,23571
+"frozenset({'Sooji', 'Thick Poha'})",0.02193504123098517,41882

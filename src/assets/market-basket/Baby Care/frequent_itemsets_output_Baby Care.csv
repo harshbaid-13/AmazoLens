@@ -1,0 +1,22 @@
+itemsets,support,support_count
+frozenset({'Baby Cereal'}),0.09343913827487789,15649
+frozenset({'Baby Cream'}),0.021752110724990746,3643
+frozenset({'Baby Lotion'}),0.022253669138633133,3727
+frozenset({'Baby Massage Oil'}),0.01825911462998125,3058
+frozenset({'Baby Milk Powder'}),0.017058956997336963,2857
+frozenset({'Baby Powder'}),0.0371750319444942,6226
+frozenset({'Baby Shampoo'}),0.05040662057106008,8442
+frozenset({'Baby Soap'}),0.0772698503684066,12941
+frozenset({'Baby Toothbrush'}),0.012933041951778742,2166
+frozenset({'Baby Toothpaste'}),0.04216673234693512,7062
+frozenset({'Baby Wash'}),0.03372980331745065,5649
+frozenset({'Baby Wipes'}),0.09280621932432917,15543
+frozenset({'Diaper'}),0.3189911510765593,53423
+frozenset({'Feeding Bottle'}),0.014957188406835525,2505
+frozenset({'Follow up Formula'}),0.06156032434110749,10310
+frozenset({'Infant Formula'}),0.02932922533108826,4912
+frozenset({'Kids Toothbrush'}),0.02877392851598419,4819
+frozenset({'Kids Toothpaste'}),0.013804798242157178,2312
+frozenset({'Ready to Cook'}),0.011780651787100395,1973
+frozenset({'Snack'}),0.01135074457540692,1901
+"frozenset({'Baby Wipes', 'Diaper'})",0.01586477029818842,2657

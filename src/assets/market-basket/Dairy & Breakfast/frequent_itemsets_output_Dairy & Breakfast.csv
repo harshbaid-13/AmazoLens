@@ -1,0 +1,38 @@
+itemsets,support,support_count
+frozenset({'Brown Bread'}),0.05674274536375915,240676
+frozenset({'Bun'}),0.020018017087705873,84907
+frozenset({'Cereal'}),0.01308113182769704,55484
+frozenset({'Cheese Slices'}),0.03003822442331527,127408
+frozenset({'Curd'}),0.25202633295681814,1068977
+frozenset({'Flavoured Yogurt'}),0.023597858225182476,100091
+frozenset({'Fresh Cream'}),0.010435387804727966,44262
+frozenset({'Fresh Milk'}),0.3329285264818418,1412126
+frozenset({'Greek Yogurt'}),0.013594625900235505,57662
+frozenset({'Health Drink'}),0.013829918409139722,58660
+frozenset({'Milk'}),0.09088538590682747,385493
+frozenset({'Milk Bread'}),0.017846630307136884,75697
+frozenset({'Mishti Doi'}),0.019559220271746343,82961
+frozenset({'Multigrain Bread'}),0.022690873974927438,96244
+frozenset({'Oats'}),0.020643027549735012,87558
+frozenset({'Paneer'}),0.11455585945539921,485892
+frozenset({'Pav'}),0.014292015921616946,60620
+frozenset({'Roasted Vermicelli'}),0.010359236020784014,43939
+frozenset({'Salted Butter'}),0.0800395329137205,339490
+frozenset({'Tofu'}),0.012400009524867094,52595
+frozenset({'Wheat Bread'}),0.08084372404385305,342901
+frozenset({'White Bread'}),0.06734175341014997,285632
+frozenset({'White Eggs'}),0.07212988523713972,305941
+"frozenset({'Curd', 'Brown Bread'})",0.010578968103247674,44871
+"frozenset({'Fresh Milk', 'Brown Bread'})",0.015979850662343698,67779
+"frozenset({'Fresh Milk', 'Curd'})",0.07226898601895684,306531
+"frozenset({'Milk', 'Curd'})",0.01668077714427981,70752
+"frozenset({'Paneer', 'Curd'})",0.026593004550953207,112795
+"frozenset({'Salted Butter', 'Curd'})",0.011817436589494024,50124
+"frozenset({'Curd', 'Wheat Bread'})",0.014567152552770475,61787
+"frozenset({'Curd', 'White Bread'})",0.011503163128202118,48791
+"frozenset({'Curd', 'White Eggs'})",0.011365476930606863,48207
+"frozenset({'Fresh Milk', 'Paneer'})",0.02212621910636471,93849
+"frozenset({'Salted Butter', 'Fresh Milk'})",0.01480692457837728,62804
+"frozenset({'Fresh Milk', 'Wheat Bread'})",0.019600478978217525,83136
+"frozenset({'Fresh Milk', 'White Bread'})",0.018245778821740933,77390
+"frozenset({'Fresh Milk', 'White Eggs'})",0.014127452623806179,59922

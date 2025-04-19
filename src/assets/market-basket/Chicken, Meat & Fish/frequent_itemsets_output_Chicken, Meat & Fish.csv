@@ -1,0 +1,13 @@
+itemsets,support,support_count
+frozenset({'Chicken'}),0.6240283380891469,63420
+frozenset({'Chicken Breast'}),0.202705893928958,20601
+frozenset({'Chicken Drumstick'}),0.02112565187444652,2147
+frozenset({'Chicken Leg'}),0.026429203975204173,2686
+frozenset({'Chicken Thigh'}),0.018793663288399095,1910
+frozenset({'Drumstick'}),0.04891272262127325,4971
+frozenset({'Fish'}),0.037272458919610355,3788
+frozenset({'Mutton'}),0.011325396044475057,1151
+frozenset({'Raw Chicken'}),0.014070648430581522,1430
+frozenset({'Salami'}),0.025228771032175537,2564
+"frozenset({'Chicken Breast', 'Chicken'})",0.017908098002558298,1819
+"frozenset({'Drumstick', 'Chicken'})",0.011217160287316737,1140

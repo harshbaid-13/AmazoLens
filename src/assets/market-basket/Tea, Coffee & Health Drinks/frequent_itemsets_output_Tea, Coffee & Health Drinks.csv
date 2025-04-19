@@ -1,0 +1,15 @@
+itemsets,support,support_count
+frozenset({'Buttermilk'}),0.25045095381474164,290464
+frozenset({'Coffee'}),0.010456437689047082,12127
+frozenset({'Cold Coffee'}),0.024011781707312867,27848
+frozenset({'Flavoured Milk'}),0.06270068738122583,72718
+frozenset({'Green Tea Bags'}),0.029243880651580838,33916
+frozenset({'Health Drink'}),0.060099296063681924,69701
+frozenset({'Iced Tea'}),0.02121897213571037,24609
+frozenset({'Instant Coffee'}),0.07868842281705589,91260
+frozenset({'Lassi'}),0.10991977678217292,127481
+frozenset({'Milkshake'}),0.09375959246881262,108739
+frozenset({'Soy Milk'}),0.011547176839425952,13392
+frozenset({'Tea'}),0.31333788598370016,363398
+"frozenset({'Buttermilk', 'Lassi'})",0.026798555568201807,31080
+"frozenset({'Flavoured Milk', 'Milkshake'})",0.011560972749628372,13408

@@ -1,0 +1,18 @@
+itemsets,support,support_count
+frozenset({'Ale'}),0.015000830343047295,28544
+frozenset({'Beer'}),0.02501539813372517,47600
+frozenset({'Coconut Water'}),0.036536670681743176,69523
+frozenset({'Concentrated Drink Mix'}),0.02081638487556416,39610
+frozenset({'Energy Drink'}),0.04007298610279016,76252
+frozenset({'Energy Drink Mix'}),0.032671371243223245,62168
+frozenset({'Fruit Drink'}),0.010872238583834166,20688
+frozenset({'Juice'}),0.18791819334169982,357576
+frozenset({'Mango Drink'}),0.12942105119327654,246266
+frozenset({'Packaged Water'}),0.07076467237185916,134653
+frozenset({'Sharbat'}),0.03636061693437347,69188
+frozenset({'Soda Water'}),0.05306995692726826,100983
+frozenset({'Soft Drink'}),0.4790191231156994,911491
+"frozenset({'Mango Drink', 'Juice'})",0.020494232794556314,38997
+"frozenset({'Juice', 'Soft Drink'})",0.0315441017264829,60023
+"frozenset({'Mango Drink', 'Soft Drink'})",0.02770665556739758,52721
+"frozenset({'Soda Water', 'Soft Drink'})",0.015881624613470056,30220

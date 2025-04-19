@@ -1,0 +1,267 @@
+itemsets,support,support_count
+frozenset({'Apple'}),0.043667043563675186,164752
+frozenset({'Banana'}),0.09708543581963437,366295
+frozenset({'Beans'}),0.048186627100432186,181804
+frozenset({'Beetroot'}),0.029887508700171803,112763
+frozenset({'Bitter Gourd'}),0.03361937218818134,126843
+frozenset({'Bottle Gourd'}),0.06908135197356738,260638
+frozenset({'Brinjal'}),0.05876015196741829,221697
+frozenset({'Broccoli'}),0.011743972960952727,44309
+frozenset({'Cabbage'}),0.0369361718819989,139357
+frozenset({'Capsicum'}),0.0959287701760496,361931
+frozenset({'Carrot'}),0.07427017949521246,280215
+frozenset({'Cauliflower'}),0.040119917920207034,151369
+frozenset({'Chilli'}),0.12274438272380446,463104
+frozenset({'Cluster Beans'}),0.014283124396686487,53889
+frozenset({'Coconut'}),0.0825407099128154,311419
+frozenset({'Colocasia'}),0.02403129252349775,90668
+frozenset({'Coriander'}),0.1163559519246927,439001
+frozenset({'Cucumber'}),0.15284048350956317,576654
+frozenset({'Curry Leaves'}),0.03774880636028279,142423
+frozenset({'Drumstick'}),0.01563910547656268,59005
+frozenset({'Garlic'}),0.06172523412937586,232884
+frozenset({'Ginger'}),0.09350995013403433,352805
+frozenset({'Grapes'}),0.029022394891587776,109499
+frozenset({'Ivy Gourd'}),0.014483500021468816,54645
+frozenset({'Kiwi'}),0.016017062673572734,60431
+frozenset({'Lady Finger'}),0.10234980177125691,386157
+frozenset({'Lemon'}),0.08365152240416823,315610
+frozenset({'Lettuce'}),0.016869189173143093,63646
+frozenset({'Mango'}),0.06336958647878006,239088
+frozenset({'Mint Leaves'}),0.03534853961685848,133367
+frozenset({'Mushroom'}),0.03792320736703778,143081
+frozenset({'Muskmelon'}),0.042781256079518375,161410
+frozenset({'Onion'}),0.23688295041975513,893739
+frozenset({'Orange'}),0.012216551980776662,46092
+frozenset({'Papaya'}),0.01899751756864853,71676
+frozenset({'Peas'}),0.022704466627121635,85662
+frozenset({'Pointed Gourd'}),0.02373443974604245,89548
+frozenset({'Potato'}),0.19229407296323214,725509
+frozenset({'Pumpkin'}),0.019153895371058022,72266
+frozenset({'Ridge Gourd'}),0.01680345748670656,63398
+frozenset({'Round Gourd'}),0.011300019030383412,42634
+frozenset({'Sapota'}),0.011214408809742284,42311
+frozenset({'Spinach'}),0.036554769072393384,137918
+frozenset({'Sponge Gourd'}),0.015382539861762023,58037
+frozenset({'Sprouts'}),0.023050883216527065,86969
+frozenset({'Sweet Corn'}),0.02383144699296088,89914
+frozenset({'Sweet Lime'}),0.01033471740940822,38992
+frozenset({'Tomato'}),0.27415308167639124,1034356
+frozenset({'Watermelon'}),0.08417870113127413,317599
+"frozenset({'Banana', 'Apple'})",0.01134666732398353,42810
+"frozenset({'Cucumber', 'Banana'})",0.014112434049649687,53245
+"frozenset({'Banana', 'Onion'})",0.014533858974787128,54835
+"frozenset({'Potato', 'Banana'})",0.01234218431694971,46566
+"frozenset({'Tomato', 'Banana'})",0.019013685443134934,71737
+"frozenset({'Banana', 'Watermelon'})",0.0133880602632342,50512
+"frozenset({'Bottle Gourd', 'Beans'})",0.01000367355312101,37743
+"frozenset({'Capsicum', 'Beans'})",0.013639059888457568,51459
+"frozenset({'Carrot', 'Beans'})",0.014481644691609721,54638
+"frozenset({'Chilli', 'Beans'})",0.01105591063035097,41713
+"frozenset({'Coriander', 'Beans'})",0.010284358456089908,38802
+"frozenset({'Cucumber', 'Beans'})",0.014247077987995486,53753
+"frozenset({'Lady Finger', 'Beans'})",0.01352376439007091,51024
+"frozenset({'Beans', 'Onion'})",0.016943667414629646,63926
+"frozenset({'Potato', 'Beans'})",0.015248691064784409,57532
+"frozenset({'Tomato', 'Beans'})",0.021609291916009746,81530
+"frozenset({'Cucumber', 'Beetroot'})",0.010846788450518619,40924
+"frozenset({'Tomato', 'Beetroot'})",0.011674265567675276,44046
+"frozenset({'Bitter Gourd', 'Cucumber'})",0.011290742381087933,42599
+"frozenset({'Bitter Gourd', 'Lady Finger'})",0.012711660006032473,47960
+"frozenset({'Bitter Gourd', 'Onion'})",0.012963454772624025,48910
+"frozenset({'Bitter Gourd', 'Potato'})",0.011595281525102348,43748
+"frozenset({'Tomato', 'Bitter Gourd'})",0.015246040593557128,57522
+"frozenset({'Bottle Gourd', 'Brinjal'})",0.013590026170752898,51274
+"frozenset({'Capsicum', 'Bottle Gourd'})",0.015179778812875142,57272
+"frozenset({'Bottle Gourd', 'Carrot'})",0.010624678961672596,40086
+"frozenset({'Bottle Gourd', 'Chilli'})",0.015606769727589868,58883
+"frozenset({'Coriander', 'Bottle Gourd'})",0.01312566361173353,49522
+"frozenset({'Bottle Gourd', 'Cucumber'})",0.02238216932588445,84446
+"frozenset({'Ginger', 'Bottle Gourd'})",0.012148699917358306,45836
+"frozenset({'Bottle Gourd', 'Lady Finger'})",0.022388265409707193,84469
+"frozenset({'Bottle Gourd', 'Onion'})",0.025089095590305,94659
+"frozenset({'Bottle Gourd', 'Potato'})",0.02371085055211966,89459
+"frozenset({'Tomato', 'Bottle Gourd'})",0.03196468300099074,120599
+"frozenset({'Capsicum', 'Brinjal'})",0.012410036380368066,46822
+"frozenset({'Brinjal', 'Chilli'})",0.014673273761342028,55361
+"frozenset({'Coriander', 'Brinjal'})",0.01147601031987477,43298
+"frozenset({'Brinjal', 'Cucumber'})",0.01680372253382929,63399
+"frozenset({'Ginger', 'Brinjal'})",0.01040044909584475,39240
+"frozenset({'Brinjal', 'Lady Finger'})",0.01942927933157236,73305
+"frozenset({'Brinjal', 'Onion'})",0.022478381431434696,84809
+"frozenset({'Potato', 'Brinjal'})",0.02142269874160927,80826
+"frozenset({'Tomato', 'Brinjal'})",0.02741223362101548,103424
+"frozenset({'Cabbage', 'Cucumber'})",0.010226578183335215,38584
+"frozenset({'Cabbage', 'Onion'})",0.013052775652983344,49247
+"frozenset({'Cabbage', 'Potato'})",0.01191174778963952,44942
+"frozenset({'Tomato', 'Cabbage'})",0.015749630126740233,59422
+"frozenset({'Capsicum', 'Carrot'})",0.018955640123257515,71518
+"frozenset({'Capsicum', 'Chilli'})",0.01874810822616153,70735
+"frozenset({'Capsicum', 'Coriander'})",0.017008603959697995,64172
+"frozenset({'Capsicum', 'Cucumber'})",0.026762338076086547,100972
+"frozenset({'Capsicum', 'Ginger'})",0.014171274510895292,53467
+"frozenset({'Capsicum', 'Lady Finger'})",0.02120536010097235,80006
+"frozenset({'Capsicum', 'Lemon'})",0.011857678176603019,44738
+"frozenset({'Capsicum', 'Onion'})",0.03166783022353544,119480
+"frozenset({'Capsicum', 'Potato'})",0.02606128843647112,98327
+"frozenset({'Tomato', 'Capsicum'})",0.040424457064221445,152518
+"frozenset({'Carrot', 'Chilli'})",0.014100241882004202,53199
+"frozenset({'Coriander', 'Carrot'})",0.015897791468345156,59980
+"frozenset({'Carrot', 'Cucumber'})",0.02333872439180962,88055
+"frozenset({'Ginger', 'Carrot'})",0.01076356365398204,40610
+"frozenset({'Carrot', 'Lady Finger'})",0.014213682050531765,53627
+"frozenset({'Carrot', 'Onion'})",0.02292922658719494,86510
+"frozenset({'Potato', 'Carrot'})",0.019427689048835992,73299
+"frozenset({'Tomato', 'Carrot'})",0.029876376721017228,112721
+"frozenset({'Cucumber', 'Cauliflower'})",0.01048208360964496,39548
+"frozenset({'Lady Finger', 'Cauliflower'})",0.010455843944494891,39449
+"frozenset({'Onion', 'Cauliflower'})",0.01395950185983566,52668
+"frozenset({'Potato', 'Cauliflower'})",0.013929286487844673,52554
+"frozenset({'Tomato', 'Cauliflower'})",0.017737218500077128,66921
+"frozenset({'Coriander', 'Chilli'})",0.032887046988084014,124080
+"frozenset({'Cucumber', 'Chilli'})",0.029773803484521515,112334
+"frozenset({'Curry Leaves', 'Chilli'})",0.010517334876967776,39681
+"frozenset({'Chilli', 'Garlic'})",0.016591154741401475,62597
+"frozenset({'Ginger', 'Chilli'})",0.024756461451281422,93404
+"frozenset({'Lady Finger', 'Chilli'})",0.025061795736664023,94556
+"frozenset({'Lemon', 'Chilli'})",0.016567300500355958,62507
+"frozenset({'Chilli', 'Onion'})",0.04728175622343896,178390
+"frozenset({'Potato', 'Chilli'})",0.038565681592530335,145505
+"frozenset({'Tomato', 'Chilli'})",0.05654064736169444,213323
+"frozenset({'Coconut', 'Onion'})",0.01021677143979428,38547
+"frozenset({'Tomato', 'Coconut'})",0.012077667288467217,45568
+"frozenset({'Tomato', 'Colocasia'})",0.0107508413920911,40562
+"frozenset({'Coriander', 'Cucumber'})",0.026919245972741493,101564
+"frozenset({'Coriander', 'Curry Leaves'})",0.011912277883884976,44944
+"frozenset({'Coriander', 'Garlic'})",0.011876496522316702,44809
+"frozenset({'Ginger', 'Coriander'})",0.018472989312769916,69697
+"frozenset({'Coriander', 'Lady Finger'})",0.01992200193272362,75164
+"frozenset({'Coriander', 'Lemon'})",0.014859071794374321,56062
+"frozenset({'Mint Leaves', 'Coriander'})",0.01621028202604141,61160
+"frozenset({'Coriander', 'Onion'})",0.036107899623474056,136232
+"frozenset({'Coriander', 'Potato'})",0.03036777408655485,114575
+"frozenset({'Coriander', 'Spinach'})",0.011714817777452653,44199
+"frozenset({'Tomato', 'Coriander'})",0.047381678988707404,178767
+"frozenset({'Cucumber', 'Garlic'})",0.01396851346200841,52702
+"frozenset({'Ginger', 'Cucumber'})",0.022031246935392643,83122
+"frozenset({'Cucumber', 'Lady Finger'})",0.0307229372310103,115915
+"frozenset({'Cucumber', 'Lemon'})",0.02124962297046792,80173
+"frozenset({'Mango', 'Cucumber'})",0.010138847585712265,38253
+"frozenset({'Cucumber', 'Onion'})",0.04874349110528361,183905
+"frozenset({'Potato', 'Cucumber'})",0.03924499736808207,148068
+"frozenset({'Tomato', 'Cucumber'})",0.06403724018093176,241607
+"frozenset({'Cucumber', 'Watermelon'})",0.017117273280016453,64582
+"frozenset({'Curry Leaves', 'Onion'})",0.011995237633298824,45257
+"frozenset({'Tomato', 'Curry Leaves'})",0.014231970301999993,53696
+"frozenset({'Ginger', 'Garlic'})",0.020721649101993842,78181
+"frozenset({'Lady Finger', 'Garlic'})",0.011201686547851343,42263
+"frozenset({'Garlic', 'Onion'})",0.028893051895696537,109011
+"frozenset({'Potato', 'Garlic'})",0.020461372827474997,77199
+"frozenset({'Tomato', 'Garlic'})",0.02686835692517773,101372
+"frozenset({'Ginger', 'Lady Finger'})",0.017067179373820872,64393
+"frozenset({'Ginger', 'Lemon'})",0.013317557728588565,50246
+"frozenset({'Ginger', 'Onion'})",0.035962388753096416,135683
+"frozenset({'Ginger', 'Potato'})",0.029541357157889102,111457
+"frozenset({'Tomato', 'Ginger'})",0.039414892573750686,148709
+"frozenset({'Lemon', 'Lady Finger'})",0.013295293770279418,50162
+"frozenset({'Lady Finger', 'Onion'})",0.03863114823184414,145752
+"frozenset({'Potato', 'Lady Finger'})",0.035300035993399266,133184
+"frozenset({'Tomato', 'Lady Finger'})",0.04737611299913012,178746
+"frozenset({'Lady Finger', 'Watermelon'})",0.01002037152185287,37806
+"frozenset({'Lemon', 'Onion'})",0.023988089842493097,90505
+"frozenset({'Potato', 'Lemon'})",0.018978699222934846,71605
+"frozenset({'Tomato', 'Lemon'})",0.02920421721777915,110185
+"frozenset({'Mango', 'Onion'})",0.011217059280969563,42321
+"frozenset({'Tomato', 'Mango'})",0.013877337251789995,52358
+"frozenset({'Mint Leaves', 'Onion'})",0.010055887836298415,37940
+"frozenset({'Mint Leaves', 'Tomato'})",0.012799655650778152,48292
+"frozenset({'Mushroom', 'Onion'})",0.010572994772740646,39891
+"frozenset({'Tomato', 'Mushroom'})",0.012916806479023905,48734
+"frozenset({'Tomato', 'Muskmelon'})",0.010341873681721873,39019
+"frozenset({'Muskmelon', 'Watermelon'})",0.016061060495945575,60597
+"frozenset({'Potato', 'Onion'})",0.09190296942893476,346742
+"frozenset({'Spinach', 'Onion'})",0.010895822168223289,41109
+"frozenset({'Tomato', 'Onion'})",0.10828712236748572,408558
+"frozenset({'Watermelon', 'Onion'})",0.015975980369549902,60276
+"frozenset({'Tomato', 'Pointed Gourd'})",0.010201928800921516,38491
+"frozenset({'Tomato', 'Potato'})",0.08277925232327056,312319
+"frozenset({'Potato', 'Watermelon'})",0.013079545412378867,49348
+"frozenset({'Tomato', 'Spinach'})",0.014454874932214198,54537
+"frozenset({'Tomato', 'Watermelon'})",0.01909293453283059,72036
+"frozenset({'Tomato', 'Beans', 'Onion'})",0.010901653204923303,41131
+"frozenset({'Tomato', 'Bottle Gourd', 'Cucumber'})",0.012957358688801282,48887
+"frozenset({'Bottle Gourd', 'Lady Finger', 'Onion'})",0.010024347228693789,37821
+"frozenset({'Tomato', 'Bottle Gourd', 'Lady Finger'})",0.012513404758231966,47212
+"frozenset({'Bottle Gourd', 'Potato', 'Onion'})",0.013908082718026437,52474
+"frozenset({'Tomato', 'Bottle Gourd', 'Onion'})",0.016036411113531875,60504
+"frozenset({'Tomato', 'Bottle Gourd', 'Potato'})",0.014452754555232374,54529
+"frozenset({'Tomato', 'Brinjal', 'Lady Finger'})",0.010900327969309663,41126
+"frozenset({'Potato', 'Brinjal', 'Onion'})",0.012685685388005134,47862
+"frozenset({'Tomato', 'Brinjal', 'Onion'})",0.014133637819467923,53325
+"frozenset({'Tomato', 'Potato', 'Brinjal'})",0.012837292342205521,48434
+"frozenset({'Capsicum', 'Tomato', 'Chilli'})",0.0114810462152066,43317
+"frozenset({'Capsicum', 'Cucumber', 'Onion'})",0.011755635034352757,44353
+"frozenset({'Tomato', 'Capsicum', 'Cucumber'})",0.015348613830052845,57909
+"frozenset({'Capsicum', 'Lady Finger', 'Onion'})",0.010006589071471016,37754
+"frozenset({'Tomato', 'Capsicum', 'Lady Finger'})",0.012546270601450232,47336
+"frozenset({'Capsicum', 'Potato', 'Onion'})",0.015485643192503196,58426
+"frozenset({'Tomato', 'Capsicum', 'Onion'})",0.01973302333421859,74451
+"frozenset({'Capsicum', 'Potato', 'Tomato'})",0.016063710967172854,60607
+"frozenset({'Tomato', 'Carrot', 'Cucumber'})",0.011930036041107749,45011
+"frozenset({'Potato', 'Onion', 'Carrot'})",0.010815777937159448,40807
+"frozenset({'Tomato', 'Carrot', 'Onion'})",0.014000319116735764,52822
+"frozenset({'Tomato', 'Potato', 'Carrot'})",0.01145931235114291,43235
+"frozenset({'Coriander', 'Chilli', 'Onion'})",0.01371777888390777,51756
+"frozenset({'Coriander', 'Potato', 'Chilli'})",0.011482901545065698,43324
+"frozenset({'Tomato', 'Coriander', 'Chilli'})",0.01745891902121278,65871
+"frozenset({'Cucumber', 'Chilli', 'Onion'})",0.014408491685736807,54362
+"frozenset({'Potato', 'Cucumber', 'Chilli'})",0.011928180711248654,45004
+"frozenset({'Tomato', 'Cucumber', 'Chilli'})",0.017883524511822957,67473
+"frozenset({'Ginger', 'Chilli', 'Onion'})",0.012874663986510161,48575
+"frozenset({'Ginger', 'Potato', 'Chilli'})",0.010819753644000367,40822
+"frozenset({'Ginger', 'Tomato', 'Chilli'})",0.01448058450311881,54634
+"frozenset({'Lady Finger', 'Chilli', 'Onion'})",0.0126939018488097,47893
+"frozenset({'Potato', 'Lady Finger', 'Chilli'})",0.011459047304020182,43234
+"frozenset({'Tomato', 'Lady Finger', 'Chilli'})",0.015339602227880094,57875
+"frozenset({'Potato', 'Chilli', 'Onion'})",0.023309834255432274,87946
+"frozenset({'Tomato', 'Chilli', 'Onion'})",0.029407508360911487,110952
+"frozenset({'Tomato', 'Potato', 'Chilli'})",0.023433876308868954,88414
+"frozenset({'Coriander', 'Cucumber', 'Onion'})",0.011302934548733419,42645
+"frozenset({'Tomato', 'Coriander', 'Cucumber'})",0.015020485492115643,56671
+"frozenset({'Tomato', 'Ginger', 'Coriander'})",0.010497191295640453,39605
+"frozenset({'Tomato', 'Coriander', 'Lady Finger'})",0.011740527348357264,44296
+"frozenset({'Coriander', 'Potato', 'Onion'})",0.01645730594442386,62092
+"frozenset({'Tomato', 'Coriander', 'Onion'})",0.021896337949924117,82613
+"frozenset({'Tomato', 'Potato', 'Coriander'})",0.017568648530022154,66285
+"frozenset({'Ginger', 'Cucumber', 'Onion'})",0.011225010694651403,42351
+"frozenset({'Tomato', 'Ginger', 'Cucumber'})",0.013174962376560928,49708
+"frozenset({'Cucumber', 'Lady Finger', 'Onion'})",0.013947574739312902,52623
+"frozenset({'Potato', 'Cucumber', 'Lady Finger'})",0.012400229636827131,46785
+"frozenset({'Tomato', 'Cucumber', 'Lady Finger'})",0.01762457347291775,66496
+"frozenset({'Tomato', 'Cucumber', 'Lemon'})",0.011402327219756401,43020
+"frozenset({'Potato', 'Cucumber', 'Onion'})",0.02276728279520816,85899
+"frozenset({'Tomato', 'Cucumber', 'Onion'})",0.030040970984231287,113342
+"frozenset({'Tomato', 'Potato', 'Cucumber'})",0.023627360708460356,89144
+"frozenset({'Ginger', 'Garlic', 'Onion'})",0.011869870344248504,44784
+"frozenset({'Tomato', 'Ginger', 'Garlic'})",0.011084270672482861,41820
+"frozenset({'Potato', 'Garlic', 'Onion'})",0.014354687119823033,54159
+"frozenset({'Tomato', 'Garlic', 'Onion'})",0.016694258072142646,62986
+"frozenset({'Tomato', 'Potato', 'Garlic'})",0.012102846765126372,45663
+"frozenset({'Tomato', 'Ginger', 'Lady Finger'})",0.01047042153624493,39504
+"frozenset({'Ginger', 'Potato', 'Onion'})",0.01847272426564719,69696
+"frozenset({'Tomato', 'Ginger', 'Onion'})",0.021603990973555188,81510
+"frozenset({'Tomato', 'Potato', 'Ginger'})",0.01758057565054491,66330
+"frozenset({'Potato', 'Lady Finger', 'Onion'})",0.02101161065425822,79275
+"frozenset({'Tomato', 'Lady Finger', 'Onion'})",0.024358890767189497,91904
+"frozenset({'Tomato', 'Potato', 'Lady Finger'})",0.021276392729863442,80274
+"frozenset({'Potato', 'Lemon', 'Onion'})",0.011466733670579292,43263
+"frozenset({'Tomato', 'Lemon', 'Onion'})",0.014525377466859833,54803
+"frozenset({'Tomato', 'Potato', 'Lemon'})",0.011313006339397082,42683
+"frozenset({'Tomato', 'Potato', 'Onion'})",0.049932492497841194,188391
+"frozenset({'Capsicum', 'Potato', 'Tomato', 'Onion'})",0.01086719707896867,41001
+"frozenset({'Tomato', 'Cucumber', 'Chilli', 'Onion'})",0.010333127126671851,38986
+"frozenset({'Tomato', 'Potato', 'Chilli', 'Onion'})",0.015954776599731667,60196
+"frozenset({'Tomato', 'Potato', 'Coriander', 'Onion'})",0.01118260315501493,42191
+"frozenset({'Tomato', 'Potato', 'Cucumber', 'Onion'})",0.015569398083285228,58742
+"frozenset({'Tomato', 'Potato', 'Ginger', 'Onion'})",0.012320980547131474,46486
+"frozenset({'Tomato', 'Potato', 'Lady Finger', 'Onion'})",0.014379866596482188,54254

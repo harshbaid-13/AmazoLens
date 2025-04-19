@@ -1,0 +1,29 @@
+itemsets,support,support_count
+frozenset({'Bakery Cookies'}),0.012036199162757765,16081
+frozenset({'Baking Soda'}),0.011529482737586009,15404
+frozenset({'Biscuit'}),0.44574055071168583,595533
+frozenset({'Cake'}),0.033557800476478106,44835
+frozenset({'Center Filled Biscuits'}),0.01070990447235252,14309
+frozenset({'Choco Pie'}),0.03459967531228177,46227
+frozenset({'Chocolate Cake'}),0.028477912178633633,38048
+frozenset({'Cookies'}),0.17729835567900376,236880
+frozenset({'Cream Biscuits'}),0.041973634279478436,56079
+frozenset({'Croissant'}),0.015262867565882491,20392
+frozenset({'Custard Powder'}),0.01202272664332927,16063
+frozenset({'Fruit Cake'}),0.08354384144940358,111619
+frozenset({'Glucose & Milk Biscuits'}),0.0112420689897781,15020
+frozenset({'Marie Biscuits'}),0.06516882189553858,87069
+frozenset({'Puff Roll'}),0.06010090917051943,80298
+frozenset({'Rusk'}),0.07785394741076888,104017
+frozenset({'Sandwich Cream Biscuits'}),0.11895411334729984,158929
+frozenset({'Sweet & Salty Biscuits'}),0.04211509573347764,56268
+frozenset({'Swiss Roll'}),0.012506988869453532,16710
+frozenset({'Wafers'}),0.01982780623223779,26490
+"frozenset({'Biscuit', 'Cookies'})",0.052675305545513536,70377
+"frozenset({'Biscuit', 'Cream Biscuits'})",0.013747957603478305,18368
+"frozenset({'Fruit Cake', 'Biscuit'})",0.01932108980706604,25814
+"frozenset({'Marie Biscuits', 'Biscuit'})",0.025183132705064844,33646
+"frozenset({'Rusk', 'Biscuit'})",0.023975096796309728,32032
+"frozenset({'Sandwich Cream Biscuits', 'Biscuit'})",0.040448245690852085,54041
+"frozenset({'Sweet & Salty Biscuits', 'Biscuit'})",0.02038017952880612,27229
+"frozenset({'Sandwich Cream Biscuits', 'Cookies'})",0.0191766344598605,25621

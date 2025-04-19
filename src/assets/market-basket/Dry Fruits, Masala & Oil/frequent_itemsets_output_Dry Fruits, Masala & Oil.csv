@@ -1,0 +1,75 @@
+itemsets,support,support_count
+frozenset({'Ajwain Seeds'}),0.015062178248072417,34706
+frozenset({'Almonds'}),0.040676908334497885,93727
+frozenset({'Amchur Powder'}),0.0173996672137878,40092
+frozenset({'Black Salt'}),0.012189575302645365,28087
+frozenset({'Cashews'}),0.04173628645653859,96168
+frozenset({'Chat Masala'}),0.02105432643775535,48513
+frozenset({'Chicken Masala'}),0.012959913756812613,29862
+frozenset({'Chilli Powder'}),0.08898255432947572,205032
+frozenset({'Chilli Whole'}),0.01686325125359021,38856
+frozenset({'Coriander Powder'}),0.0574620407589331,132403
+frozenset({'Coriander Seeds'}),0.010839421538749977,24976
+frozenset({'Cow Ghee'}),0.040933832483718735,94319
+frozenset({'Cumin Powder / Jeera Powder'}),0.0159457890045144,36742
+frozenset({'Cumin Seeds / Jeera Seeds'}),0.08190238444706191,188718
+frozenset({'Edible Oil'}),0.027417973059419787,63176
+frozenset({'Garam Masala'}),0.030302293829220086,69822
+frozenset({'Ghee'}),0.07411523916079546,170775
+frozenset({'Green Cardamom Whole'}),0.02125179347811935,48968
+frozenset({'Groundnut Oil'}),0.01152947119628571,26566
+frozenset({'Hing Powder'}),0.03550804580540947,81817
+frozenset({'Jaggery'}),0.01049266073600089,24177
+frozenset({'Kasuri Methi'}),0.014419433881524984,33225
+frozenset({'Kitchen King Masala'}),0.012788486326166944,29467
+frozenset({'Makhana'}),0.02544677460374224,58634
+frozenset({'Methi Seeds'}),0.012725123275852342,29321
+frozenset({'Mustard Oil'}),0.16504382032322099,380291
+frozenset({'Peanuts'}),0.046436002017201765,106997
+frozenset({'Peppercorns'}),0.01039631418004307,23955
+frozenset({'Raisins'}),0.0289599519482402,66729
+frozenset({'Rice Bran Oil'}),0.0316307479183502,72883
+frozenset({'Rock Salt'}),0.011818944857654473,27233
+frozenset({'Sabzi Masala'}),0.02866440237793716,66048
+frozenset({'Salt'}),0.10960288727192556,252544
+frozenset({'Salt Lite'}),0.019393433331221233,44686
+frozenset({'Sambhar Masala'}),0.011299020650278494,26035
+frozenset({'Saunf Seeds'}),0.02176086784811269,50140
+frozenset({'Small Mustard Seeds'}),0.015940581082570734,36730
+frozenset({'Soyabean Oil'}),0.09652188932992273,222404
+frozenset({'Sugar'}),0.07346424891783722,169275
+frozenset({'Sulphurless Sugar'}),0.12092447558395995,278632
+frozenset({'Sunflower Oil'}),0.049438369017725164,113915
+frozenset({'Tamarind (Imli)'}),0.012887436843096596,29695
+frozenset({'Turmeric Powder'}),0.06344594307220523,146191
+frozenset({'Walnut Kernels'}),0.012413081952727693,28602
+"frozenset({'Almonds', 'Cashews'})",0.01450059066514711,33412
+"frozenset({'Raisins', 'Cashews'})",0.011011716956386258,25373
+"frozenset({'Coriander Powder', 'Chilli Powder'})",0.02234849504075633,51495
+"frozenset({'Cumin Seeds / Jeera Seeds', 'Chilli Powder'})",0.018476405075640728,42573
+"frozenset({'Mustard Oil', 'Chilli Powder'})",0.019503667679028825,44939
+"frozenset({'Salt', 'Chilli Powder'})",0.01906229629430314,43923
+"frozenset({'Soyabean Oil', 'Chilli Powder'})",0.01112715922613752,25639
+"frozenset({'Sulphurless Sugar', 'Chilli Powder'})",0.012515504417619788,28837
+"frozenset({'Turmeric Powder', 'Chilli Powder'})",0.024360488884992593,56131
+"frozenset({'Coriander Powder', 'Cumin Seeds / Jeera Seeds'})",0.0148473514678962,34211
+"frozenset({'Coriander Powder', 'Mustard Oil'})",0.014380374466947489,33135
+"frozenset({'Coriander Powder', 'Salt'})",0.013148700927270503,30297
+"frozenset({'Turmeric Powder', 'Coriander Powder'})",0.019563558781380986,45078
+"frozenset({'Mustard Oil', 'Cumin Seeds / Jeera Seeds'})",0.018994159315540177,43766
+"frozenset({'Cumin Seeds / Jeera Seeds', 'Salt'})",0.01671959940664409,38524
+"frozenset({'Sulphurless Sugar', 'Cumin Seeds / Jeera Seeds'})",0.01241134597874647,28598
+"frozenset({'Turmeric Powder', 'Cumin Seeds / Jeera Seeds'})",0.017357569844743168,39995
+"frozenset({'Mustard Oil', 'Ghee'})",0.012321943318713538,28391
+"frozenset({'Mustard Oil', 'Salt'})",0.026207565201012768,60387
+"frozenset({'Soyabean Oil', 'Mustard Oil'})",0.02749652588207008,63357
+"frozenset({'Sugar', 'Mustard Oil'})",0.01532387632574163,35309
+"frozenset({'Sulphurless Sugar', 'Mustard Oil'})",0.020005364159601975,46096
+"frozenset({'Turmeric Powder', 'Mustard Oil'})",0.017719954413323254,40830
+"frozenset({'Soyabean Oil', 'Salt'})",0.016368932662437257,37717
+"frozenset({'Sugar', 'Salt'})",0.013001143138866635,29957
+"frozenset({'Sulphurless Sugar', 'Salt'})",0.01855018396984266,42743
+"frozenset({'Turmeric Powder', 'Salt'})",0.017068964170365016,39330
+"frozenset({'Sulphurless Sugar', 'Soyabean Oil'})",0.010993489229583427,25331
+"frozenset({'Sulphurless Sugar', 'Turmeric Powder'})",0.010112048440617973,23300
+"frozenset({'Turmeric Powder', 'Coriander Powder', 'Chilli Powder'})",0.011828492714551194,27255

@@ -1,0 +1,26 @@
+itemsets,support,support_count
+frozenset({'Candy'}),0.09202442328341758,87159
+frozenset({'Chewing Gum'}),0.019948708148520424,18894
+frozenset({'Chocolate'}),0.12414676353485112,117583
+frozenset({'Chocolate Bar'}),0.19772702556885072,187273
+frozenset({'Chocolate Gift Pack'}),0.022590375756628717,21396
+frozenset({'Dark Chocolate'}),0.05364527957648853,50809
+frozenset({'Digestive Tablets'}),0.018310071806480428,17342
+frozenset({'Filled Bar'}),0.035238072110557274,33375
+frozenset({'Frozen Dessert'}),0.14003477878937293,132631
+frozenset({'Ice Cream'}),0.16780079587891406,158929
+frozenset({'Laddu'}),0.018756684675477153,17765
+frozenset({'Lollipop'}),0.010451585792431654,9899
+frozenset({'Milk Chocolate'}),0.01700613116059164,16107
+frozenset({'Mouth Freshener'}),0.022740302535346296,21538
+frozenset({'Rasgulla'}),0.01178086617556848,11158
+frozenset({'Shaped Chocolates'}),0.11111897112220194,105244
+frozenset({'Stick Kulfi'}),0.024471851247295773,23178
+frozenset({'Syrup'}),0.02697520612292518,25549
+frozenset({'Wafer Bar'}),0.04361813438296156,41312
+frozenset({'Wafer Chocolate'}),0.023446647711135443,22207
+frozenset({'Wafers'}),0.01486070007359082,14075
+"frozenset({'Chocolate Bar', 'Chocolate'})",0.019955043082832434,18900
+"frozenset({'Chocolate', 'Shaped Chocolates'})",0.013325534325313658,12621
+"frozenset({'Chocolate Bar', 'Shaped Chocolates'})",0.018578250692355528,17596
+"frozenset({'Frozen Dessert', 'Ice Cream'})",0.013702462916878272,12978

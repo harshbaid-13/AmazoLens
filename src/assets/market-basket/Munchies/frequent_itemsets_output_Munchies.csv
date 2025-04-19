@@ -1,0 +1,41 @@
+itemsets,support,support_count
+frozenset({'Banana Chips'}),0.027064657212784258,49685
+frozenset({'Bhel Namkeen'}),0.030953448353814084,56824
+frozenset({'Bhujia'}),0.09232705937338115,169493
+frozenset({'Boondi Namkeen'}),0.0396004115941429,72698
+frozenset({'Cheese Balls'}),0.011060094596928078,20304
+frozenset({'Chips'}),0.2057720141040174,377754
+frozenset({'Crisps'}),0.23539197587522312,432130
+frozenset({'Dal Namkeen'}),0.016385870053693536,30081
+frozenset({'Makhana'}),0.025472426297357704,46762
+frozenset({'Mixture Namkeen'}),0.048289863377545025,88650
+frozenset({'Nachos'}),0.07220546587870393,132554
+frozenset({'Namkeen'}),0.16342891258200154,300021
+frozenset({'Papad'}),0.0417482619189896,76641
+frozenset({'Peanut Namkeen'}),0.0564389480490405,103610
+frozenset({'Popcorn'}),0.055575559064794486,102025
+frozenset({'Potato Chips'}),0.3220397333244725,591197
+frozenset({'Puffs'}),0.0858186861344087,157545
+"frozenset({'Crisps', 'Bhujia'})",0.011295960483476043,20737
+"frozenset({'Namkeen', 'Bhujia'})",0.022779306336403585,41818
+"frozenset({'Bhujia', 'Potato Chips'})",0.014405250276584073,26445
+"frozenset({'Chips', 'Crisps'})",0.051551676145788,94638
+"frozenset({'Chips', 'Nachos'})",0.013547308541450025,24870
+"frozenset({'Chips', 'Namkeen'})",0.020599861966707503,37817
+"frozenset({'Chips', 'Potato Chips'})",0.07895896532771468,144952
+"frozenset({'Chips', 'Puffs'})",0.018928645939157496,34749
+"frozenset({'Crisps', 'Nachos'})",0.016678387331005906,30618
+"frozenset({'Crisps', 'Namkeen'})",0.025999720011395645,47730
+"frozenset({'Crisps', 'Potato Chips'})",0.07857384481549895,144245
+"frozenset({'Crisps', 'Puffs'})",0.03047626933160619,55948
+"frozenset({'Mixture Namkeen', 'Namkeen'})",0.015438593433123305,28342
+"frozenset({'Potato Chips', 'Nachos'})",0.020746392967819285,38086
+"frozenset({'Peanut Namkeen', 'Namkeen'})",0.015670646245292897,28768
+"frozenset({'Namkeen', 'Potato Chips'})",0.031241063106925687,57352
+"frozenset({'Namkeen', 'Puffs'})",0.011024687477700324,20239
+"frozenset({'Peanut Namkeen', 'Potato Chips'})",0.012272652249250867,22530
+"frozenset({'Popcorn', 'Potato Chips'})",0.010544240106025256,19357
+"frozenset({'Potato Chips', 'Puffs'})",0.029376469735901023,53929
+"frozenset({'Chips', 'Crisps', 'Potato Chips'})",0.02442383084330498,44837
+"frozenset({'Crisps', 'Namkeen', 'Potato Chips'})",0.010558947678627554,19384
+"frozenset({'Crisps', 'Potato Chips', 'Puffs'})",0.013057600846284621,23971

@@ -1,0 +1,11 @@
+itemsets,support,support_count
+frozenset({'Cigarette'}),0.764916479203561,79907
+frozenset({'Hookah Flavor'}),0.04622600871105155,4829
+frozenset({'Hookah Foil'}),0.01172641554587661,1225
+frozenset({'Magic Coal'}),0.030450390082802852,3181
+frozenset({'Roach'}),0.017498683769683627,1828
+frozenset({'Rolled Cones'}),0.03885511893935768,4059
+frozenset({'Rolling Paper'}),0.12800459484037716,13372
+"frozenset({'Cigarette', 'Rolling Paper'})",0.017173215909634807,1794
+"frozenset({'Magic Coal', 'Hookah Flavor'})",0.01380366629971761,1442
+"frozenset({'Rolling Paper', 'Roach'})",0.011496673527018619,1201

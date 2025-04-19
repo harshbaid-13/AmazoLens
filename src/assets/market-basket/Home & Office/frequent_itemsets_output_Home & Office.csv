@@ -1,0 +1,27 @@
+itemsets,support,support_count
+frozenset({'Adhesive'}),0.01847844546585076,13492
+frozenset({'Air Freshener'}),0.08115340999359034,59254
+frozenset({'Aluminium Foil'}),0.041821658074801274,30536
+frozenset({'Ball Pen'}),0.018323682321940208,13378
+frozenset({'Battery'}),0.06604962281619617,48226
+frozenset({'Camphor / Kapur'}),0.010723853246191184,7830
+frozenset({'Cockroach Killer'}),0.03665695174129081,26765
+frozenset({'Dhoop'}),0.04280228118134954,31252
+frozenset({'Disposable Plates'}),0.013809529026991788,10083
+frozenset({'Face Tissue'}),0.027213660792058596,19870
+frozenset({'Garbage Bag'}),0.09630650224338079,70318
+frozenset({'Gas Lighter'}),0.0123920081955987,9048
+frozenset({'Gel Pen'}),0.014751803743898497,10771
+frozenset({'Incense Sticks / Agarbatti'}),0.04695623353073623,34285
+frozenset({'Kitchen Towel Roll'}),0.029181754931876826,21307
+frozenset({'Matchbox'}),0.017147208511151164,12520
+frozenset({'Mosquito Killer'}),0.03605296460443636,26324
+frozenset({'Mosquito Killer Machine'}),0.01852775053824704,13528
+frozenset({'Mosquito Repellent'}),0.049272202348017116,35976
+frozenset({'Napkins'}),0.050944466053457656,37197
+frozenset({'Notebook'}),0.024145789620734427,17630
+frozenset({'Pooja Oil'}),0.020486257580654883,14958
+frozenset({'Refill'}),0.018470227953784713,13486
+frozenset({'Room Freshener'}),0.03718150292817347,27148
+frozenset({'Tape'}),0.011119663410705775,8119
+frozenset({'Toilet Roll'}),0.04699458192037779,34313

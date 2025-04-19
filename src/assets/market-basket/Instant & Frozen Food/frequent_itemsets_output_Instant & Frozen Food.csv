@@ -1,0 +1,26 @@
+itemsets,support,support_count
+frozenset({'Aloo Tikki'}),0.014481050155195348,18811
+frozenset({'Batter'}),0.12723401241562793,165278
+frozenset({'Breakfast Mix'}),0.04926990441937232,64001
+frozenset({'Cup Noodles'}),0.0314132014583436,40806
+frozenset({'Domestic Pasta'}),0.04203515297827265,54604
+frozenset({'Flavoured Instant Noodles'}),0.049066672414642555,63737
+frozenset({'French Fries'}),0.030163016701975662,39182
+frozenset({'Green Peas'}),0.07635441814061192,99185
+frozenset({'Instant Mix'}),0.011990688279056019,15576
+frozenset({'Instant Pasta'}),0.05486571291323841,71271
+frozenset({'Kebab'}),0.011631183179780263,15109
+frozenset({'Macaroni'}),0.03327539168350002,43225
+frozenset({'Momos'}),0.014467193427600137,18793
+frozenset({'Noodles'}),0.37556350692220525,487860
+frozenset({'Nuggets'}),0.03580809356062472,46514
+frozenset({'Nutrition Bar'}),0.01825161969749224,23709
+frozenset({'Pasta'}),0.014444868699807854,18764
+frozenset({'Patty'}),0.016196974922402324,21039
+frozenset({'Protein Bar'}),0.023024492535842735,29909
+frozenset({'Sausage'}),0.011130801349953196,14459
+frozenset({'Smiles'}),0.010261676602453565,13330
+frozenset({'Soup'}),0.01400761196235897,18196
+frozenset({'Sweet Corn'}),0.02486281839680741,32297
+"frozenset({'Noodles', 'Flavoured Instant Noodles'})",0.01048107478937774,13615
+"frozenset({'Noodles', 'Instant Pasta'})",0.015918300734098636,20678

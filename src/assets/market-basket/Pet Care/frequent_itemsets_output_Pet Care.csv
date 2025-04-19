@@ -1,0 +1,9 @@
+itemsets,support,support_count
+frozenset({'Cat Food'}),0.4213271117820627,18420
+frozenset({'Dog Biscuit'}),0.057480729202406274,2513
+frozenset({'Dog Food'}),0.37029666735286715,16188
+frozenset({'Dog Supplement'}),0.01784121320249777,780
+frozenset({'Dog Treat'}),0.14995768430201972,6556
+frozenset({'Dry Food'}),0.04220133122898511,1845
+"frozenset({'Dog Biscuit', 'Dog Treat'})",0.010087147464489124,441
+"frozenset({'Dog Treat', 'Dog Food'})",0.024428738077266178,1068
