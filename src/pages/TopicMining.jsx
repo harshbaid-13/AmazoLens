@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import cloud from "d3-cloud";
 import * as d3 from "d3";
 
 export default function TopicMining() {
@@ -381,59 +382,53 @@ export default function TopicMining() {
     // Combine all words from all topics for the selected category
     const words = categoryTopics.flatMap((topic) => topic.words);
 
-    const width = 700;
+    const width = 500;
     const height = 400;
 
-    const svg = d3
-      .select(wordCloudRef.current)
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .append("g")
-      .attr("transform", `translate(${width / 2}, ${height / 2})`);
+    // Prepare data for d3-cloud
+    const wordEntries = words.map((word) => ({
+      text: word.text,
+      size: word.size,
+    }));
 
-    // Simple word cloud layout
-    // In a real app, you would use d3-cloud or another library
-    // Here we'll create a simplified version
+    // Configure the layout
+    cloud()
+      .size([width, height])
+      .words(wordEntries)
+      .padding(0)
+      .rotate(() => [0, 90, -45, 45][Math.floor(Math.random() * 4)])
+      .font("Impact")
+      .fontSize((d) =>
+        d3
+          .scaleSqrt()
+          .domain([0, d3.max(words, (d) => d.size)])
+          .range([10, 50])(d.size)
+      )
+      .on("end", draw)
+      .start();
 
-    // Scale for font size
-    const fontScale = d3
-      .scaleSqrt()
-      .domain([0, d3.max(words, (d) => d.size)])
-      .range([10, 50]);
+    function draw(words) {
+      const svg = d3
+        .select(wordCloudRef.current)
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-    // Color scale
-    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
-
-    // Position words in a circular layout
-    const angleStep = (2 * Math.PI) / words.length;
-
-    words.forEach((word, i) => {
-      const angle = i * angleStep;
-      const radius = Math.random() * (height / 3) + 20;
-      const x = radius * Math.cos(angle);
-      const y = radius * Math.sin(angle);
+      const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
       svg
+        .selectAll("text")
+        .data(words)
+        .enter()
         .append("text")
-        .attr("x", x)
-        .attr("y", y)
-        .style("font-size", `${fontScale(word.size)}px`)
-        .style("fill", colorScale(i % 10))
+        .style("font-size", (d) => `${d.size}px`)
+        .style("fill", (d, i) => colorScale(i % 10))
         .attr("text-anchor", "middle")
-        .attr("transform", `rotate(${Math.random() * 30 - 15}, ${x}, ${y})`)
-        .text(word.text);
-    });
-
-    // Add title
-    svg
-      .append("text")
-      .attr("x", 0)
-      .attr("y", -height / 2 + 20)
-      .attr("text-anchor", "middle")
-      .style("font-size", "16px")
-      .style("font-weight", "bold")
-      .text(`Key Words in Reviews: ${selectedCategory}`);
+        .attr("transform", (d) => `translate(${d.x},${d.y})rotate(${d.rotate})`)
+        .text((d) => d.text);
+    }
   }, [selectedCategory]);
 
   // Draw topic graph
@@ -670,7 +665,11 @@ export default function TopicMining() {
         {/* Word Cloud */}
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-bold mb-4">Common Words in Reviews</h2>
-          <div ref={wordCloudRef} className="flex justify-center"></div>
+          <div
+            ref={wordCloudRef}
+            className="flex justify-center"
+            style={{ width: "100%", minHeight: 400, height: 400 }}
+          ></div>
         </div>
 
         {/* Topic Graph */}
