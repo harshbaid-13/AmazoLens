@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ark-ui/react": "^5.6.0",
     "@tailwindcss/vite": "^4.1.4",
     "axios": "^1.8.4",
+    "@zag-js/date-picker": "^1.10.0",
     "d3": "^7.9.0",
     "d3-cloud": "^1.2.7",
+    "date-fns": "^4.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.0",
