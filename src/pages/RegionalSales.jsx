@@ -1,9 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import { DateRangePicker } from "../components/ui/DateRangePicker.jsx";
 
 export default function RegionalSales() {
   const mapChartRef = useRef();
   const barChartRef = useRef();
+  const [htmlContent, setHtmlContent] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Mock data for regional sales
   const regionData = [
@@ -250,6 +254,31 @@ export default function RegionalSales() {
       .text("Top 10 Cities by Sales");
   }, []);
 
+  const fetchHtml = async (from_date, to_date) => {
+    try {
+      setLoading(true); // Set loading to true when the API request starts
+      const response = await fetch(
+        `http://127.0.0.1:8000/analytics/get-folium?from_date=${from_date}&to_date=${to_date}`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data); // Get HTML response
+        setHtmlContent(data.map_html); // Set the HTML content
+      } else {
+        throw new Error("Failed to fetch HTML");
+      }
+    } catch (error) {
+      setError(error.message); // Set error message if something goes wrong
+    } finally {
+      setLoading(false); // Set loading to false once the API request finishes
+    }
+  };
+  useEffect(() => {
+    fetchHtml("2022-04-02", "2022-04-02");
+  }, []);
+  const handleDateChange = (from = "2022-04-02", to = "2022-04-02") => {
+    fetchHtml(from, to);
+  };
   // Summary statistics
   const totalSales = regionData.reduce((sum, region) => sum + region.sales, 0);
   const avgGrowth =
@@ -261,7 +290,7 @@ export default function RegionalSales() {
       <h1 className="text-3xl font-bold mb-6">Regional Sales Analysis</h1>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-gray-500 text-sm">Total Global Sales</h3>
           <p className="text-2xl font-bold">
@@ -280,8 +309,17 @@ export default function RegionalSales() {
             {regionData.sort((a, b) => b.sales - a.sales)[0].region}
           </p>
         </div>
-      </div>
-
+      </div> */}
+      {/* <div className="p-8">
+        <DateRangePicker onDateChange={handleDateChange} />
+      </div> */}
+      {/* Render HTML content when fetched */}
+      {!loading && !error && (
+        <div>
+          <h1>Fetched HTML Content:</h1>
+          <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        </div>
+      )}
       {/* World Map */}
       <div className="bg-white rounded-lg shadow p-6 mb-6 overflow-x-auto">
         <h2 className="text-xl font-bold mb-4">Global Sales Distribution</h2>

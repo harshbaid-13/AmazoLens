@@ -8,6 +8,7 @@ import ProductRecommendation from "./pages/ProductRecommendation";
 import MarketBasket from "./pages/MarketBasket";
 import SentimentAnalysis from "./pages/SentimentAnalysis";
 import TopicMining from "./pages/TopicMining";
+import TopBrands from "./pages/TopBrands";
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -37,6 +38,7 @@ export default function App() {
             />
             <Route path="/sentiment-analysis" element={<SentimentAnalysis />} />
             <Route path="/topic-mining" element={<TopicMining />} />
+            <Route path="/top-brands" element={<TopBrands />} />
           </Routes>
         </div>
       </div>
