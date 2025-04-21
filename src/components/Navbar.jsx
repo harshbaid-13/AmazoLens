@@ -19,6 +19,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
     { name: "Sentiment Analysis", path: "/sentiment-analysis", icon: "😊" },
     { name: "Topic Mining", path: "/topic-mining", icon: "📝" },
     { name: "Top Brands", path: "/top-brands", icon: "📝" },
+    { name: "Top Items", path: "/top-items", icon: "📝" },
   ];
 
   return (
