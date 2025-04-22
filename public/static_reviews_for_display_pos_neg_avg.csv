@@ -1,0 +1,104 @@
+updated_sentiment,split_2_category,review_title,product_id,rating,final_l0_category,actual_score,date_of_review
+avg,Kitchen&HomeAppliances,Good but creates noise. ,B07Z51CGGH,3.8,Cleaning Essentials,0.999838114,23/06/22
+avg,Accessories&Peripherals,Size is not to big not to small. ,B08QJJCY2Q,4.4,Home & Office,0.954326034,27/04/22
+pos,Accessories&Peripherals,Durability and Quality. ,B0994GP1CX,3.3,Home & Office,0.9987955093383788,16/06/22
+neg,"Heating,Cooling&AirQuality",The final finish product is not  elegant.. ,B09P1MFKG1,4.6,Home & Office,0.9997031092643738,03/05/22
+pos,Mobiles&Accessories,Value for Money meeting all smart phone requirements. ,B0B56YRBNT,3.8,Home & Office,0.6418310403823853,29/06/22
+neg,"HomeTheater,TV&Video",. Very bad product never connect only,B09LV13JFB,3.3,Home & Office,-0.999644995,01/06/22
+pos,Kitchen&HomeAppliances,Value for money. ,B07SLNG3LW,3.9,Cleaning Essentials,0.9952259063720704,09/04/22
+pos,"HomeTheater,TV&Video",Good quality product. ,B08PPHFXG3,4.3,Home & Office,0.999865174,29/04/22
+pos,"Headphones,Earbuds&Accessories",A decent all rounder.. ,B092X94QNQ,4.1,Home & Office,0.999848723,22/06/22
+neg,Accessories&Peripherals,Not good for keyboard. Not transparent. ,B00MFPCY5C,3.5,Home & Office,-0.999763429,11/05/22
+avg,WearableTechnology,Ok ok. ,B08HV25BBQ,4.0,Home & Office,0.9997230172157288,11/04/22
+avg,"HomeTheater,TV&Video",Working fine till now. ,B075TJHWVC,4.2,Home & Office,0.99929893,05/06/22
+pos,"Printers,Inks&Accessories",It's Awesome. ,B07P434WJY,4.3,Home & Office,0.9998682737350464,09/05/22
+pos,Accessories,Good for use. Fast and smooth,B0BDYVC5TD,4.4,Home & Office,0.999721348,24/06/22
+pos,"HomeTheater,TV&Video",Value for money. ,B09JPC82QC,4.3,Home & Office,0.9952259063720704,07/05/22
+pos,HomeStorage&Organization,Amazing product. ,B09FHHTL8L,4.1,Cleaning Essentials,0.9998769760131836,10/05/22
+pos,Mobiles&Accessories,Mobile is good at this prize. ,B09NY7W8YD,3.8,Home & Office,0.99951756,01/05/22
+avg,HomeAudio,It's OK to use in small room. But for Outdoor activities it will not meet our expectations.. ,B07YNTJ8ZM,3.9,Home & Office,0.9025266766548156,26/05/22
+pos,"Heating,Cooling&AirQuality",Easy to use. Easy to use,B00KIDSU8S,4.2,Home & Office,0.9351831674575806,12/04/22
+neg,Accessories&Peripherals,No guide stickers provided. ,B09Q3M3WLJ,4.0,Home & Office,-0.658138037,04/05/22
+neg,NetworkingDevices,No backup at all. ,B08HLZ28QC,4.1,Home & Office,-0.996453285,18/06/22
+neg,Mobiles&Accessories,Price can be reduced as this product is not worth for 80 rs. ,B09Z6WH2N1,4.2,Home & Office,-0.999551833,02/05/22
+neg,"Headphones,Earbuds&Accessories",Noise cancellation is just a hype. ,B0B1F6GQPS,3.8,Home & Office,-0.999182642,27/05/22
+neg,Kitchen&HomeAppliances,One star for bad delivery options. ,B0BNDRK886,3.9,Home & Office,-0.999796212,17/06/22
+avg,"HomeTheater,TV&Video",Average product quality. Okay product at Cheap price. But very high delivery charges even for prime customers. Quality is not great (cheap plastic) but does its purpose.,B07VVXJ2P5,3.6,Home & Office,-0.99317944,09/04/22
+pos,NetworkingDevices,Cheap and best WiFi 5 gigabit router. One of the cheapest WiFi 5 gigabit routers. Those not willing to pay 4k rupees or more for WiFi 6 & 6E routers will find this one to be suitable enough. Keep in mind that WiFi 6 & 6E routers will of course have better performance and stability than WiFi 5 routers.Can easily stream 4k videos and download files. No issues on video calls either on phone or PC. No connection drops or any other problems so far.I had to input my ISP-provided account username and password during setup on the miwifi website. Not sure if that will be the case for everybody.Will update in a few more months.,B09MKG4ZCM,4.0,Home & Office,-0.995953202,19/04/22
+pos,Kitchen&HomeAppliances,Very User friendly sewing machine for beginners. ,B09R83SFYV,3.7,Home & Office,-0.577584743,29/05/22
+avg,Kitchen&HomeAppliances,It's work worthy. I expected heavy weight but it is normal weight. Works normal.,B0B84KSH3X,3.8,Home & Office,-0.956263363,19/06/22
+neg,"Printers,Inks&Accessories",Compatibility. Compatibility issue,B08CYPB15D,4.0,Home & Office,-0.693362951,14/06/22
+avg,"Printers,Inks&Accessories",On average is ok ok pricing. ,B08CYNJ5KY,4.2,Home & Office,0.9979092478752136,10/06/22
+pos,"Printers,Inks&Accessories",Good for home printing and school assigmntsnment. ,B08D9MNH4B,3.6,Home & Office,0.9997134804725648,28/04/22
+pos,ExternalDevices&DataStorage,Good hdd with a 1.5 tb storage.....really cool and fast. ,B06XDKWLJH,4.4,Home & Office,0.9997991919517516,20/04/22
+pos,GeneralPurposeBatteries&BatteryChargers,Works Good. Works good,B003B00484,4.3,Home & Office,0.9998518228530884,15/06/22
+neg,WearableTechnology,Problem with connection.. ,B0BNVBJW2S,4.1,Home & Office,-0.993818462,19/04/22
+pos,GeneralPurposeBatteries&BatteryChargers,Good. Nice,B01DJJVFPC,4.5,Home & Office,0.9998514652252196,06/05/22
+pos,PowerAccessories,Works great. ,B0083T231O,4.5,Home & Office,0.999869466,17/06/22
+avg,CraftMaterials,. Holds good on walls but not in wood works .,B00N1U9AJS,3.9,Home & Office,0.999705732,13/04/22
+neg,"Heating,Cooling&AirQuality",Small size is not good. ,B08YRMBK9R,3.9,Home & Office,-0.999689221,25/06/22
+pos,NetworkingDevices,Nice and compatible product. ,B08G43CCLC,4.2,Home & Office,0.9998414516448976,27/04/22
+avg,NetworkingDevices,overall is ok. ,B0759QMF85,4.3,Home & Office,0.9998003840446472,30/05/22
+pos,Mobiles&Accessories,Above average phone. I purchased the 6/128gb variant.To sum  it up in to pros and cons.Pros :-1.Good design in terms of look of the phone and it's build quality.2. Screen quality is good with little boosted colour tone.3. The new processor is very smooth and responsive.4. Speaker quality is good without too much treble.5. Camera is ok for selfie and main camera performance is above average with less noise.6. Camera in front is small so notch is not distracting while playing video.Cons :-1.Main camera struggles after 3x zoom.And video call performance of front camera  is inferior to stock selfie photo.2. 18 watt charger took 1hr30 mins to charge 80% of the phone.So charging speed is not time saving for this big battery.,B07WDK3ZS6,4.1,Home & Office,-0.961957633,20/05/22
+pos,OfficePaperProducts,VALUE FOR MONEY. ,B00J4YG0PC,4.4,Home & Office,0.9952259063720704,03/05/22
+pos,NetworkingDevices,good. good to work,B09LHXNZLR,3.7,Home & Office,0.9998399019241332,03/04/22
+pos,CraftMaterials,Affordable. ,B00LXTFMRS,4.4,Home & Office,0.9997765421867372,27/06/22
+avg,OfficePaperProducts,Good pen but finished really quick. ,B00S2SEV7K,4.1,Home & Office,0.9989995360374452,09/04/22
+neg,"Heating,Cooling&AirQuality",one rod is not working  solution i have. ,B009P2LK80,3.7,Home & Office,-0.879299045,05/06/22
+pos,WearableTechnology,Nyc watch with minimal features. ,B0BD92GDQH,3.8,Home & Office,-0.991877675,17/05/22
+pos,CraftMaterials,Best in its class!. One of the best option to save money.,B00VA7YYUO,4.3,Home & Office,0.9995654225349426,04/04/22
+pos,CarAccessories,Liked it. ,B0912WJ87V,3.8,Home & Office,0.999828577,06/05/22
+pos,NetworkingDevices,Easy plug and play. ,B07KRCW6LZ,4.3,Home & Office,-0.743393362,28/05/22
+neg,"Heating,Cooling&AirQuality",Not relatable product. No after sell service. ,B09MQ9PDHR,3.9,Home & Office,-0.905929863,07/05/22
+neg,GeneralPurposeBatteries&BatteryChargers,. charger is not good because no idicate light after battery fully charge,B00BN5SNF0,3.9,Home & Office,-0.997561455,15/04/22
+avg,Accessories,Costly but excellent quality. It was a bit costly but prouduct is of great quality. Could have been made little bit cheaper cost wise.,B0BDRVFDKP,4.4,Home & Office,-0.957143009,23/04/22
+pos,Components,Really increase performance. ,B08C4Z69LN,4.5,Home & Office,0.9998231530189514,05/04/22
+neg,Accessories,Fake Product. 128GB SD Card is showing 134GBDon't buy this product,B0BDYW3RN3,4.4,Home & Office,-0.998412371,09/04/22
+neg,HomeAudio,Poor battery life. ,B08JMC1988,4.1,Home & Office,-0.999778807,02/05/22
+neg,ExternalDevices&DataStorage,Reding speed is only under 22mb/s. ,B005FYNT3G,4.3,Home & Office,-0.867509902,07/04/22
+pos,Monitors,My Best Buy in 2022. ,B08L879JSN,4.2,Home & Office,0.9978251457214355,06/06/22
+pos,Microphones,Buy this and start creating content for your youtube.. ,B076B8G5D8,4.0,Home & Office,0.9059816002845764,19/06/22
+pos,"Headphones,Earbuds&Accessories",Not bad. ,B07S9S86BF,4.1,Home & Office,-0.999782383,12/04/22
+pos,Cameras&Photography,Does what it says. ,B01IBRHE3E,4.2,Cleaning Essentials,-0.969552398,31/05/22
+pos,PowerAccessories,Best quality. ,B0083T231O,4.5,Home & Office,0.9998157620429992,19/05/22
+pos,Tablets,good tablet. ,B09XXZXQC1,4.6,Home & Office,0.9998420476913452,09/05/22
+pos,Arts&Crafts,Good product. ,B00DJ5N9VK,4.3,Home & Office,0.999858856,05/04/22
+avg,OfficePaperProducts,Too costly. Product is good indeed I wanted to buy it for long but it is costly,B00UGZWM2I,4.1,Home & Office,-0.997078896,14/05/22
+pos,Arts&Crafts,Looks cool and variety of colors.. ,B00DJ5N9VK,4.3,Home & Office,0.9998681545257568,13/05/22
+pos,Arts&Crafts,Budget friendly. ,B00DJ5N9VK,4.3,Home & Office,0.9993402361869812,21/05/22
+neg,OfficePaperProducts,It's good but I ordered avengers printing I got other one. You can buy but don't go for printing,B00P93X2H6,4.1,Home & Office,-0.984123647,18/06/22
+neg,GeneralPurposeBatteries&BatteryChargers,Charge seems to be very low.. ,B08Y57TPDM,4.3,Home & Office,-0.999683976,05/04/22
+pos,OfficeElectronics,Good features. ,B00K32PEW4,4.4,Home & Office,0.9998512268066406,20/06/22
+pos,Monitors,Nice product. ,B08L879JSN,4.2,Home & Office,0.9998539686203004,17/04/22
+neg,Kitchen&Dining,String issues. ,B01LWYDEQ7,4.1,Home & Office,-0.948812306,02/06/22
+avg,HomeStorage&Organization,Not bad. Ave been using it for a month now and this is the current condition,B0814LP6S9,3.7,Home & Office,-0.999498606,18/05/22
+pos,GeneralPurposeBatteries&BatteryChargers,Perfect replacement cell for trimmer. Bought it to replace my Phillips QT4005 trimmer's 7yr old  battery cell.Old trimmer battery lost it torque... would not start without smacking it on the hand.Soldering the connections was bit tricky but i got it done by sanding both side surfaces of the new battery cell.New Duracell one does its job..trimmer works now like its supposed to.Its lasts more than 30+ minutes easily.Charges like its supposed to.I am satisfied with it. Saved an electronic device from being obsolete.If you want more performance..maybe get 900mah cell....but for me thats expensive...750mah is enough.Long term performance is to be seen.,B003B00484,4.3,Home & Office,-0.997677624,09/04/22
+pos,OfficeElectronics,Excellent product. ,B00K32PEW4,4.4,Home & Office,0.9998617172241212,26/04/22
+neg,HomeStorage&Organization,Product is dirty. The product is okay. But this is my replaced product. It still is dirty inside on the bottom part. Feels like an old product. The first product was also dirty and then I replaced and they keep sending me products with dirt on it!,B08VGM3YMF,4.1,Home & Office,-0.999257267,10/05/22
+pos,Kitchen&Dining,Good product.. ,B01LWYDEQ7,4.1,Home & Office,0.999858856,04/06/22
+pos,OfficeElectronics,Good and light calculator. ,B0846D5CBP,4.5,Home & Office,0.9998127818107604,14/06/22
+neg,"Printers,Inks&Accessories",After every 100 copy cartridge has to be replaced. ,B08D9MNH4B,3.6,Home & Office,-0.997337878,23/05/22
+pos,PowerAccessories,Good. ,B0083T231O,4.5,Home & Office,0.99981612,21/05/22
+avg,CraftMaterials,Writes neat but smells bad. ,B07JB2Y4SR,4.4,Home & Office,-0.999709427,07/05/22
+pos,HomeStorage&Organization,Good Purchase. Good to keep laundry & toys. Could be better if bigger size is available. All over not bad to invest your money on this product.,B08D6RCM3Q,4.1,Home & Office,-0.950606048,29/05/22
+pos,CarAccessories,Air purification is awesome. ,B0912WJ87V,3.8,Home & Office,0.99972266,07/05/22
+neg,"Printers,Inks&Accessories",Costly. ,B08CYNJ5KY,4.2,Home & Office,-0.99974829,17/04/22
+pos,CarAccessories,Excelent product for the Prize you pay. ,B0912WJ87V,3.8,Home & Office,0.9932690262794496,17/06/22
+neg,Kitchen&Dining,Not good. ,B01LWYDEQ7,4.1,Home & Office,-0.999782383,23/04/22
+avg,Cameras&Photography,This product should not be played with fiddle with it or or open it roughly. ,B00R1P3B4O,4.5,Home & Office,-0.828522265,13/05/22
+pos,Kitchen&Dining,Good. ,B01LWYDEQ7,4.1,Home & Office,0.99981612,10/04/22
+pos,Kitchen&Dining,Nice chopper. ,B01LWYDEQ7,4.1,Home & Office,0.9996739625930786,06/06/22
+neg,Cameras&Photography,Design problem of getting overheated. ,B00N3XLDW0,3.8,Home & Office,-0.99920243,03/06/22
+neg,CarAccessories,Not as per expected. ,B0912WJ87V,3.8,Home & Office,-0.863414586,12/05/22
+avg,Monitors,Average product for daily use. And some gaming.. ,B08L879JSN,4.2,Home & Office,-0.934832156,29/05/22
+pos,Tablets,the only ANDROID tablet that makes sense in the non-sense tab market of India.. ,B09XXZXQC1,4.6,Home & Office,-0.978120506,08/04/22
+neg,CarAccessories,Dont expect much. ,B0912WJ87V,3.8,Home & Office,-0.995908737,14/06/22
+avg,ExternalDevices&DataStorage,Hard disk. Hard disk is good but data cable quality poor,B08ZJDWTJ1,4.5,Home & Office,-0.99959439,14/05/22
+avg,Tablets,All good but miner bugs just don't upgrade it to 13.0.6.. New update details given. ,B09XXZXQC1,4.6,Home & Office,-0.894857466,09/06/22
+neg,Monitors,price relaetd issue. ,B08L879JSN,4.2,Home & Office,-0.977310658,21/04/22
+pos,Components,Not gona regret after buying it. ,B0BDS8MY8J,4.2,Home & Office,-0.998649776,30/06/22
+avg,OfficeElectronics,Average product. ,B00K32PEW4,4.4,Home & Office,-0.96768111,08/05/22
+neg,CraftMaterials,One pen is missing. Silver colour pen is missing. ,B07JB2Y4SR,4.4,Home & Office,-0.998895109,01/06/22
+pos,Kitchen&Dining,Probably the best purchase for my mom!. ,B01LWYDEQ7,4.1,Home & Office,-0.831391335,20/04/22
+avg,PowerAccessories,Good product with bad resellers. ,B0083T231O,4.5,Home & Office,-0.957391381,14/04/22
+pos,Tablets,An impressive tablet for Android (at last). ,B09XXZXQC1,4.6,Home & Office,0.999722183,03/05/22
