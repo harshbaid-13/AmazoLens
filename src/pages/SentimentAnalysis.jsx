@@ -71,6 +71,7 @@ export default function SentimentAnalysis() {
         : allReviews
             .filter((r) => r.split_2_category === selectedCategory)
             .slice(0, 4);
+            
     setRecentReviews(filtered);
   }, [selectedCategory, allReviews]);
 
@@ -136,17 +137,17 @@ export default function SentimentAnalysis() {
     d3.select(categoryChartRef.current).selectAll("*").remove();
     let current;
     if (selectedCategory === "All") {
-      let total = { positive: 0, neutral: 0, negative: 0 };
+      let total = { positive: 0, negative: 0 };
       const n = Object.keys(categoryData).length;
       for (const values of Object.values(categoryData)) {
         total.positive += values.positive;
-        total.neutral += values.neutral;
+        // total.neutral += values.neutral;
         total.negative += values.negative;
       }
       current = {
         category: "All",
         positive: +(total.positive / n).toFixed(1),
-        neutral: +(total.neutral / n).toFixed(1),
+        // neutral: +(total.neutral / n).toFixed(1),
         negative: +(total.negative / n).toFixed(1),
       };
     } else {
@@ -155,11 +156,11 @@ export default function SentimentAnalysis() {
         ...categoryData[selectedCategory],
       };
     }
-    const keys = ["positive", "neutral", "negative"];
+    const keys = ["positive", "negative"];
     const color = d3
       .scaleOrdinal()
       .domain(keys)
-      .range(["#2ecc71", "#f1c40f", "#e74c3c"]);
+      .range(["#2ecc71", "#e74c3c"]);
     const containerWidth = Math.max(
       categoryChartRef.current.clientWidth || 500,
       400
