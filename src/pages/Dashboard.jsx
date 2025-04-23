@@ -1,11 +1,24 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import Heatmap from "../components/HeatMap";
+import SliderFilter from "../components/SliderFilter";
+import RaceBarChart from "../components/RaceBarChart";
+import "../styles/regionalsales.css";
+
 
 export default function Dashboard() {
   const salesChartRef = useRef();
   const pieChartRef = useRef();
 
-  // Mock data
+  // --- Key metrics data ---
+  const keyMetrics = [
+    { name: "Total Sales", value: "$4.25M", change: "+15%", icon: "📈" },
+    { name: "Total Orders", value: "124,500", change: "+8%", icon: "📦" },
+    { name: "Avg. Order Value", value: "$34.20", change: "+5%", icon: "💰" },
+    { name: "Active Customers", value: "56,700", change: "+12%", icon: "👥" },
+  ];
+
+  // --- Bar chart data ---
   const monthlySales = [
     { month: "Jan", sales: 12000 },
     { month: "Feb", sales: 15000 },
@@ -21,6 +34,7 @@ export default function Dashboard() {
     { month: "Dec", sales: 35000 },
   ];
 
+  // --- Pie chart data ---
   const categoryData = [
     { category: "Electronics", percentage: 30 },
     { category: "Clothing", percentage: 25 },
@@ -29,11 +43,26 @@ export default function Dashboard() {
     { category: "Other", percentage: 10 },
   ];
 
-  // Draw bar chart for monthly sales
+  // --- Heatmap state ---
+  const [salesData, setSalesData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [dayOffset, setDayOffset] = useState(0);
+
+  const allStates = [
+    "andhra pradesh", "arunachal pradesh", "assam", "bihar", "chhattisgarh",
+    "goa", "gujarat", "haryana", "himachal pradesh", "jammu and kashmir",
+    "jharkhand", "karnataka", "kerala", "madhya pradesh", "maharashtra",
+    "manipur", "meghalaya", "mizoram", "nagaland", "odisha", "punjab",
+    "rajasthan", "sikkim", "tamil nadu", "telangana", "tripura",
+    "uttar pradesh", "uttarakhand", "west bengal", "andaman and nicobar",
+    "chandigarh", "dadra and nagar haveli and daman and diu", "delhi",
+    "lakshadweep", "puducherry"
+  ];
+
+  // --- Bar Chart ---
   useEffect(() => {
     if (!salesChartRef.current) return;
 
-    // Clear previous chart
     d3.select(salesChartRef.current).selectAll("*").remove();
 
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
@@ -48,27 +77,23 @@ export default function Dashboard() {
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    // X scale
     const x = d3
       .scaleBand()
       .domain(monthlySales.map((d) => d.month))
       .range([0, width])
       .padding(0.1);
 
-    // Y scale
     const y = d3
       .scaleLinear()
       .domain([0, d3.max(monthlySales, (d) => d.sales)])
       .nice()
       .range([height, 0]);
 
-    // Add X axis
     svg
       .append("g")
       .attr("transform", `translate(0,${height})`)
       .call(d3.axisBottom(x));
 
-    // Add Y axis
     svg.append("g").call(
       d3
         .axisLeft(y)
@@ -76,7 +101,6 @@ export default function Dashboard() {
         .tickFormat((d) => `$${d / 1000}k`)
     );
 
-    // Add Y axis label
     svg
       .append("text")
       .attr("text-anchor", "middle")
@@ -86,7 +110,6 @@ export default function Dashboard() {
       )
       .text("Sales ($)");
 
-    // Add X axis label
     svg
       .append("text")
       .attr("text-anchor", "middle")
@@ -96,7 +119,6 @@ export default function Dashboard() {
       )
       .text("Month");
 
-    // Add the bars
     svg
       .selectAll(".bar")
       .data(monthlySales)
@@ -110,11 +132,10 @@ export default function Dashboard() {
       .attr("fill", "#3b82f6");
   }, []);
 
-  // Draw pie chart for category distribution
+  // --- Pie Chart ---
   useEffect(() => {
     if (!pieChartRef.current) return;
 
-    // Clear previous chart
     d3.select(pieChartRef.current).selectAll("*").remove();
 
     const width = 300;
@@ -129,31 +150,26 @@ export default function Dashboard() {
       .append("g")
       .attr("transform", `translate(${width / 2},${height / 2})`);
 
-    // Color scale
     const color = d3
       .scaleOrdinal()
       .domain(categoryData.map((d) => d.category))
       .range(d3.schemeCategory10);
 
-    // Pie generator
     const pie = d3
       .pie()
       .value((d) => d.percentage)
       .sort(null);
 
-    // Arc generator
     const arc = d3
       .arc()
       .innerRadius(0)
       .outerRadius(radius - 20);
 
-    // Label arc
     const labelArc = d3
       .arc()
       .innerRadius(radius - 60)
       .outerRadius(radius - 60);
 
-    // Add the pie slices
     const g = svg
       .selectAll(".arc")
       .data(pie(categoryData))
@@ -165,14 +181,12 @@ export default function Dashboard() {
       .attr("d", arc)
       .attr("fill", (d) => color(d.data.category));
 
-    // Add labels
     g.append("text")
       .attr("transform", (d) => `translate(${labelArc.centroid(d)})`)
       .attr("dy", ".35em")
       .attr("text-anchor", "middle")
       .text((d) => d.data.category);
 
-    // Add title
     svg
       .append("text")
       .attr("text-anchor", "middle")
@@ -180,13 +194,40 @@ export default function Dashboard() {
       .text("Sales by Category");
   }, []);
 
-  // Key metrics data
-  const keyMetrics = [
-    { name: "Total Sales", value: "$4.25M", change: "+15%", icon: "📈" },
-    { name: "Total Orders", value: "124,500", change: "+8%", icon: "📦" },
-    { name: "Avg. Order Value", value: "$34.20", change: "+5%", icon: "💰" },
-    { name: "Active Customers", value: "56,700", change: "+12%", icon: "👥" },
-  ];
+  // --- Heatmap Data Fetch ---
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      if (dayOffset === 0) {
+        const zeroData = allStates.map((state) => ({ state, value: 0 }));
+        setSalesData(zeroData);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const res = await fetch(`http://127.0.0.1:8000/dashboard/heatmap-data?until_days=${dayOffset}`);
+        const rawData = await res.json();
+        console.log(rawData);
+
+        const formatted = rawData.map(([state, value]) => {
+          const normalized = state.trim().toLowerCase()
+            .replace(/&/g, "and")
+            .replace(/\s+/g, " ")
+            .replace("andaman and nicobar islands", "andaman and nicobar")
+            .replace("jammu & kashmir", "jammu and kashmir");
+          return { state: normalized, value };
+        });
+        setSalesData(formatted.sort((a, b) => b.value - a.value));
+      } catch (err) {
+        console.error("Error fetching heatmap data:", err);
+      }
+      setLoading(false);
+    };
+
+    fetchData();
+    // eslint-disable-next-line
+  }, [dayOffset]);
 
   return (
     <div>
@@ -219,16 +260,49 @@ export default function Dashboard() {
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         <div className="lg:col-span-2 bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-bold mb-4">Monthly Sales</h2>
           <div ref={salesChartRef} className="overflow-x-auto"></div>
         </div>
-
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-bold mb-4">Sales by Category</h2>
           <div ref={pieChartRef}></div>
         </div>
+      </div>
+
+      {/* Heatmap Section */}
+      <div className="bg-white rounded-lg shadow p-6 mb-8">
+        <h2 className="text-xl font-bold mb-4">📍 India Sales Heatmap</h2>
+        <div className="regional-slider mb-4">
+          <SliderFilter dayOffset={dayOffset} setDayOffset={setDayOffset} />
+        </div>
+        <div className="regional-layout">
+          <div className="heatmap-wrapper">
+            {loading ? (
+              <div className="loading-text">Loading India map...</div>
+            ) : (
+              <Heatmap data={salesData} />
+            )}
+          </div>
+          <div className="stats-panel">
+            <h3 className="stats-heading">📊 Sales by State / UT</h3>
+            <ul className="stats-list">
+              {salesData.map((item) => (
+                <li key={item.state} className="stats-item">
+                  <span className="state-name">{item.state}</span>
+                  <span className="sales-value">{item.value.toLocaleString()}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Race Bar Chart Section */}
+      <div className="bg-white rounded-lg shadow p-6 mb-8">
+        {/* <h2 className="text-xl font-bold mb-4">Top 10 Weekly Selling Products</h2> */}
+        <RaceBarChart />
       </div>
     </div>
   );

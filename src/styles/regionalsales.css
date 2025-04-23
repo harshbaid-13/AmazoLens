@@ -1,0 +1,87 @@
+.regional-container {
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.regional-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.regional-heading {
+  font-size: 1.875rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
+}
+
+.regional-slider {
+  margin-bottom: 1.5rem;
+}
+
+.regional-layout {
+  display: grid;
+  grid-template-columns: 820px 1fr;
+  gap: 1.5rem;
+}
+
+.heatmap-wrapper {
+  padding: 1rem;
+  min-height: 700px;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.stats-panel {
+  padding: 1rem;
+  max-height: 700px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.stats-heading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stats-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+  background-color: #f9fafb;
+}
+
+.stats-item:hover {
+  background-color: #e0f2fe;
+}
+
+.state-name {
+  text-transform: capitalize;
+  font-weight: 500;
+  color: #374151;
+}
+
+.sales-value {
+  font-weight: 600;
+  color: #111827;
+}
+
+.loading-text {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
