@@ -68,95 +68,97 @@ export default function TopBrands() {
   const [selectedBrand, setSelectedBrand] = useState(null);
 
   // Bar chart
-  useEffect(() => {
-    if (!barRef.current || filteredData.length === 0) return;
+ // Bar chart
+useEffect(() => {
+  if (!barRef.current || filteredData.length === 0) return;
 
-    d3.select(barRef.current).selectAll("*").remove();
+  d3.select(barRef.current).selectAll("*").remove();
 
-    const width = 500;
-    const height = 400;
-    const margin = { top: 20, right: 20, bottom: 30, left: 150 };
+  const containerWidth = barRef.current.clientWidth || 600;
+  const height = 400;
+  const margin = { top: 20, right: 20, bottom: 40, left: 160 };
 
-    const svg = d3
-      .select(barRef.current)
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height);
+  const width = containerWidth;
 
-    const x = d3
-      .scaleLinear()
-      .domain([0, d3.max(filteredData, d => d.count)])
-      .nice()
-      .range([0, width - margin.left - margin.right]);
+  const svg = d3
+    .select(barRef.current)
+    .append("svg")
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .attr("preserveAspectRatio", "xMidYMid meet");
 
-    const y = d3
-      .scaleBand()
-      .domain(filteredData.map(d => d.brand))
-      .range([0, height - margin.top - margin.bottom])
-      .padding(0.2);
+  const x = d3
+    .scaleLinear()
+    .domain([0, d3.max(filteredData, d => d.count)])
+    .nice()
+    .range([0, width - margin.left - margin.right]);
 
-    const g = svg
-      .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
+  const y = d3
+    .scaleBand()
+    .domain(filteredData.map(d => d.brand))
+    .range([0, height - margin.top - margin.bottom])
+    .padding(0.3); // Slightly more padding
 
-    // Axes
-    g.append("g")
-      .attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
-      .call(d3.axisBottom(x).ticks(5));
+  const g = svg
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    g.append("g")
-      .call(d3.axisLeft(y))
-      .selectAll("text")
-      .style("font-size", "12px")
-      .style("font-weight", "500");
+  // Axes
+  g.append("g")
+    .attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
+    .call(d3.axisBottom(x).ticks(5).tickSizeOuter(0))
+    .selectAll("text")
+    .style("font-size", "12px")
+    .style("fill", "#4B5563");
 
-    // Bars with animation
-    const bars = g.selectAll(".bar")
-      .data(filteredData)
-      .enter()
-      .append("rect")
-      .attr("class", "bar")
-      .attr("y", d => y(d.brand))
-      .attr("height", y.bandwidth())
-      .attr("x", 0)
-      .attr("width", 0)
-      .attr("fill", "#10B981")
-      .on("mouseover", function () {
-        d3.select(this).transition().duration(200).attr("fill", "#059669");
-      })
-      .on("mouseout", function () {
-        d3.select(this).transition().duration(200).attr("fill", "#10B981");
-      })
-      .on("click", (_, d) => {
-        setSelectedBrand(d); // <- This sets selected brand on click
-      });
+  g.append("g")
+    .call(d3.axisLeft(y))
+    .selectAll("text")
+    .style("font-size", "13px")
+    .style("font-weight", "600")
+    .style("fill", "#374151");
 
+  // Bars
+  const bars = g
+    .selectAll(".bar")
+    .data(filteredData)
+    .enter()
+    .append("rect")
+    .attr("class", "bar")
+    .attr("y", d => y(d.brand))
+    .attr("height", y.bandwidth())
+    .attr("x", 0)
+    .attr("width", 0)
+    .attr("fill", "#10B981")
+    .on("mouseover", function () {
+      d3.select(this).transition().duration(200).attr("fill", "#059669");
+    })
+    .on("mouseout", function () {
+      d3.select(this).transition().duration(200).attr("fill", "#10B981");
+    })
+    .on("click", (_, d) => {
+      setSelectedBrand(d);
+    });
 
-    bars
-      .transition()
-      .duration(800)
-      .delay((_, i) => i * 50)
-      .attr("width", d => x(d.count));
+  bars
+    .transition()
+    .duration(800)
+    .delay((_, i) => i * 50)
+    .attr("width", d => x(d.count));
 
-    // Value Labels with fade-in
-    g.selectAll(".label")
-      .data(filteredData)
-      .enter()
-      .append("text")
-      .text(d => d.count)
-      .attr("x", 0)
-      .attr("y", d => y(d.brand) + y.bandwidth() / 2 + 5)
-      .attr("text-anchor", "start")
-      .style("fill", "#fff")
-      .style("font-size", "12px")
-      .style("opacity", 0)
-      .transition()
-      .duration(500)
-      .delay((_, i) => 200 + i * 50)
-      .attr("x", d => x(d.count) - 8)
-      .style("opacity", 1);
+  // Labels for count on top of bars
+  g.selectAll(".countLabel")
+    .data(filteredData)
+    .enter()
+    .append("text")
+    .text(d => d.count)
+    .attr("x", d => x(d.count) + 10)  // Position the text inside the bar
+    .attr("y", d => y(d.brand) + y.bandwidth() / 2 + 5)
+    .attr("text-anchor", "start")
+    .style("fill", "#ffffff")
+    .style("font-weight", "bold")
+    .style("font-size", "12px");
+}, [filteredData]);
 
-  }, [filteredData]);
 
   // Pie chart
   useEffect(() => {
@@ -310,6 +312,9 @@ export default function TopBrands() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-bold mb-4">Brands with Most Products</h2>
+          <p className="mb-4">
+          Click on the bars for more information.
+        </p>
           <div ref={barRef}></div>
         </div>
 
