@@ -383,40 +383,90 @@ export default function TopicMining() {
         <h2 className="text-xl font-bold mb-4">Topic Definitions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="border rounded p-4">
-            <h3 className="font-semibold text-lg mb-2">Quality</h3>
+            <h3 className="font-semibold text-lg mb-2">Average Review</h3>
             <p className="text-gray-700">
-              Reviews discussing the overall quality, durability, and
-              craftsmanship of products.
+              General reviews that provide an overall assessment or summary of
+              the product without focusing on specific features or issues.
             </p>
           </div>
 
           <div className="border rounded p-4">
-            <h3 className="font-semibold text-lg mb-2">Pricing</h3>
+            <h3 className="font-semibold text-lg mb-2">Battery Related</h3>
             <p className="text-gray-700">
-              Comments about product prices, value for money, and affordability.
+              Comments discussing battery performance, battery life, charging
+              speed, and issues or satisfaction with battery usage.
             </p>
           </div>
 
           <div className="border rounded p-4">
-            <h3 className="font-semibold text-lg mb-2">Customer Service</h3>
+            <h3 className="font-semibold text-lg mb-2">Boat Related</h3>
             <p className="text-gray-700">
-              Feedback regarding customer support, returns, and overall service
-              experience.
+              Reviews about Boat (earphone brand) product or Boat accessories,
+              including quality, usability, and experiences with sound quality.
             </p>
           </div>
 
           <div className="border rounded p-4">
-            <h3 className="font-semibold text-lg mb-2">User Experience</h3>
+            <h3 className="font-semibold text-lg mb-2">
+              Computer Accessories Related
+            </h3>
             <p className="text-gray-700">
-              Reviews about ease of use, convenience, and general user
-              satisfaction.
+              Feedback on computer peripherals and accessories such as
+              keyboards, mice, cables, and other related hardware.
             </p>
           </div>
 
           <div className="border rounded p-4">
-            <h3 className="font-semibold text-lg mb-2">Features</h3>
+            <h3 className="font-semibold text-lg mb-2">
+              Electronics-Charging Related
+            </h3>
             <p className="text-gray-700">
-              Comments on product functionality, features, and capabilities.
+              Reviews focused on electronic devices' charging capabilities,
+              charging speed, compatibility, and charging accessories.
+            </p>
+          </div>
+
+          <div className="border rounded p-4">
+            <h3 className="font-semibold text-lg mb-2">General Review</h3>
+            <p className="text-gray-700">
+              Broad comments that cover multiple aspects of the product,
+              offering overall impressions and satisfaction levels.
+            </p>
+          </div>
+
+          <div className="border rounded p-4">
+            <h3 className="font-semibold text-lg mb-2">Good Review</h3>
+            <p className="text-gray-700">
+              Positive reviews highlighting satisfaction, high quality, or
+              favorable experiences with the product.
+            </p>
+          </div>
+
+          <div className="border rounded p-4">
+            <h3 className="font-semibold text-lg mb-2">Lighting Related</h3>
+            <p className="text-gray-700">
+              Feedback about lighting products, brightness, energy efficiency,
+              installation, and user experience with lighting solutions.
+            </p>
+          </div>
+
+          <div className="border rounded p-4">
+            <h3 className="font-semibold text-lg mb-2">
+              Product Quality Related
+            </h3>
+            <p className="text-gray-700">
+              Reviews discussing the build quality, durability, reliability, and
+              craftsmanship of the product.
+            </p>
+          </div>
+
+          <div className="border rounded p-4">
+            <h3 className="font-semibold text-lg mb-2">
+              Smart Devices Related
+            </h3>
+            <p className="text-gray-700">
+              Comments on smart devices such as smart home products, wearables,
+              and IoT devices, including features, compatibility, and usability.
             </p>
           </div>
         </div>
