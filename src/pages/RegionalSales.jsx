@@ -1,173 +1,28 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import * as d3 from "d3";
-import { DateRangePicker } from "../components/ui/DateRangePicker.jsx";
+import { DatePickerWithRange } from "../components/ui/DateRangePicker";
 
 export default function RegionalSales() {
-  const mapChartRef = useRef();
   const barChartRef = useRef();
   const [htmlContent, setHtmlContent] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [stateData, setStateData] = useState([]);
 
-  // Mock data for regional sales
-  const regionData = [
-    {
-      id: 1,
-      region: "North America",
-      sales: 1250000,
-      growth: 12.5,
-      color: "#1f77b4",
-    },
-    { id: 2, region: "Europe", sales: 980000, growth: 8.3, color: "#ff7f0e" },
-    {
-      id: 3,
-      region: "Asia Pacific",
-      sales: 1450000,
-      growth: 15.2,
-      color: "#2ca02c",
-    },
-    {
-      id: 4,
-      region: "Latin America",
-      sales: 350000,
-      growth: 6.7,
-      color: "#d62728",
-    },
-    {
-      id: 5,
-      region: "Middle East & Africa",
-      sales: 220000,
-      growth: 9.4,
-      color: "#9467bd",
-    },
-  ];
-
-  // City-level sales data
-  const cityData = [
-    { city: "New York", sales: 320000, region: "North America" },
-    { city: "Los Angeles", sales: 280000, region: "North America" },
-    { city: "Chicago", sales: 180000, region: "North America" },
-    { city: "Toronto", sales: 150000, region: "North America" },
-    { city: "London", sales: 310000, region: "Europe" },
-    { city: "Paris", sales: 220000, region: "Europe" },
-    { city: "Berlin", sales: 180000, region: "Europe" },
-    { city: "Madrid", sales: 120000, region: "Europe" },
-    { city: "Tokyo", sales: 350000, region: "Asia Pacific" },
-    { city: "Shanghai", sales: 320000, region: "Asia Pacific" },
-    { city: "Mumbai", sales: 210000, region: "Asia Pacific" },
-    { city: "Sydney", sales: 180000, region: "Asia Pacific" },
-    { city: "São Paulo", sales: 120000, region: "Latin America" },
-    { city: "Mexico City", sales: 95000, region: "Latin America" },
-    { city: "Dubai", sales: 110000, region: "Middle East & Africa" },
-    { city: "Johannesburg", sales: 75000, region: "Middle East & Africa" },
-  ];
-
-  // Create simplified world map visualization
-  useEffect(() => {
-    if (!mapChartRef.current) return;
-
-    // Clear previous chart
-    d3.select(mapChartRef.current).selectAll("*").remove();
-
-    const width = 800;
-    const height = 500;
-
-    const svg = d3
-      .select(mapChartRef.current)
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .append("g");
-
-    // Since we can't load actual GeoJSON data in this example,
-    // we'll create a simplified representation of regions
-
-    // Draw simplified regions as rectangles
-    const regionWidth = width / 5;
-    const regionHeight = height / 2;
-
-    regionData.forEach((region, i) => {
-      // Create region rectangle
-      svg
-        .append("rect")
-        .attr("x", i * regionWidth)
-        .attr("y", height / 4)
-        .attr("width", regionWidth - 10)
-        .attr("height", regionHeight)
-        .attr("fill", region.color)
-        .attr("stroke", "#333")
-        .attr("stroke-width", 1)
-        .attr("opacity", 0.7);
-
-      // Add region name
-      svg
-        .append("text")
-        .attr("x", i * regionWidth + regionWidth / 2)
-        .attr("y", height / 4 - 10)
-        .attr("text-anchor", "middle")
-        .style("font-size", "14px")
-        .style("font-weight", "bold")
-        .text(region.region);
-
-      // Add sales value
-      svg
-        .append("text")
-        .attr("x", i * regionWidth + regionWidth / 2)
-        .attr("y", height / 4 + regionHeight / 2)
-        .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .style("font-weight", "bold")
-        .style("fill", "white")
-        .text(`$${(region.sales / 1000000).toFixed(1)}M`);
-
-      // Add growth rate
-      svg
-        .append("text")
-        .attr("x", i * regionWidth + regionWidth / 2)
-        .attr("y", height / 4 + regionHeight / 2 + 25)
-        .attr("text-anchor", "middle")
-        .style("font-size", "14px")
-        .style("fill", "white")
-        .text(`${region.growth}% growth`);
-    });
-
-    // Add title
-    svg
-      .append("text")
-      .attr("x", width / 2)
-      .attr("y", 20)
-      .attr("text-anchor", "middle")
-      .style("font-size", "18px")
-      .style("font-weight", "bold")
-      .text("Regional Sales Distribution");
-
-    // Add note about simplified visualization
-    svg
-      .append("text")
-      .attr("x", width / 2)
-      .attr("y", height - 20)
-      .attr("text-anchor", "middle")
-      .style("font-size", "12px")
-      .style("font-style", "italic")
-      .text(
-        "Note: This is a simplified representation. A real implementation would use GeoJSON data."
-      );
-  }, []);
-
-  // Create bar chart for top cities
+  // Create bar chart for top States
   useEffect(() => {
     if (!barChartRef.current) return;
 
     // Clear previous chart
     d3.select(barChartRef.current).selectAll("*").remove();
 
-    const margin = { top: 30, right: 30, bottom: 70, left: 80 };
-    const width = 700 - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
+    const margin = { top: 30, right: 90, bottom: 70, left: 120 };
+    const width = 800 - margin.left - margin.right;
+    const height = 600 - margin.top - margin.bottom;
 
-    // Sort cities by sales
-    const sortedCities = [...cityData]
-      .sort((a, b) => b.sales - a.sales)
+    // Sort States by sales
+    const sortedStates = [...stateData]
+      .sort((a, b) => b.total_price - a.total_price)
       .slice(0, 10);
 
     const svg = d3
@@ -181,23 +36,21 @@ export default function RegionalSales() {
     // Create scales
     const x = d3
       .scaleLinear()
-      .domain([0, d3.max(sortedCities, (d) => d.sales)])
+      .domain([0, d3.max(sortedStates, (d) => d.total_price)])
       .range([0, width]);
 
     const y = d3
       .scaleBand()
-      .domain(sortedCities.map((d) => d.city))
+      .domain(sortedStates.map((d) => d.state_ut))
       .range([0, height])
       .padding(0.2);
 
-    // Create color scale based on region
-    const colorScale = d3
-      .scaleOrdinal()
-      .domain(regionData.map((d) => d.region))
-      .range(regionData.map((d) => d.color));
-
-    // Add Y axis
-    svg.append("g").call(d3.axisLeft(y));
+    // Add Y axis with larger font size
+    svg
+      .append("g")
+      .call(d3.axisLeft(y))
+      .selectAll("text")
+      .style("font-size", "14px");
 
     // Add X axis
     svg
@@ -207,7 +60,7 @@ export default function RegionalSales() {
         d3
           .axisBottom(x)
           .ticks(5)
-          .tickFormat((d) => `$${d / 1000}k`)
+          .tickFormat((d) => `₹${d / 1000000}M`)
       );
 
     // Add X axis label
@@ -218,119 +71,133 @@ export default function RegionalSales() {
       .attr("y", height + margin.bottom - 10)
       .text("Sales Amount");
 
-    // Add bars
+    // Add bars with gray color
     svg
       .selectAll(".bar")
-      .data(sortedCities)
+      .data(sortedStates)
       .enter()
       .append("rect")
       .attr("class", "bar")
-      .attr("y", (d) => y(d.city))
+      .attr("y", (d) => y(d.state_ut))
       .attr("x", 0)
       .attr("height", y.bandwidth())
-      .attr("width", (d) => x(d.sales))
-      .attr("fill", (d) => colorScale(d.region));
+      .attr("width", (d) => x(d.total_price))
+      .attr("fill", "#808080")
+      .on("mouseover", function () {
+        d3.select(this).attr("fill", "#606060");
+      })
+      .on("mouseout", function () {
+        d3.select(this).attr("fill", "#808080");
+      });
 
     // Add bar labels
     svg
       .selectAll(".label")
-      .data(sortedCities)
+      .data(sortedStates)
       .enter()
       .append("text")
       .attr("class", "label")
-      .attr("y", (d) => y(d.city) + y.bandwidth() / 2)
-      .attr("x", (d) => x(d.sales) + 5)
+      .attr("y", (d) => y(d.state_ut) + y.bandwidth() / 2)
+      .attr("x", (d) => x(d.total_price) + 5)
       .attr("dy", ".35em")
-      .text((d) => `$${(d.sales / 1000).toFixed(0)}k`);
+      .text((d) => `₹${(d.total_price / 1000000).toFixed(2)}M`);
 
     // Add title
-    svg
-      .append("text")
-      .attr("x", width / 2)
-      .attr("y", -10)
-      .attr("text-anchor", "middle")
-      .style("font-size", "16px")
-      .style("font-weight", "bold")
-      .text("Top 10 Cities by Sales");
-  }, []);
+    // svg
+    //   .append("text")
+    //   .attr("x", width / 2)
+    //   .attr("y", -10)
+    //   .attr("text-anchor", "middle")
+    //   .style("font-size", "16px")
+    //   .style("font-weight", "bold")
+    //   .text("Top 10 States by Sales");
+  }, [stateData]);
 
   const fetchHtml = async (from_date, to_date) => {
     try {
-      setLoading(true); // Set loading to true when the API request starts
-      const response = await fetch(
-        `http://127.0.0.1:8000/analytics/get-folium?from_date=${from_date}&to_date=${to_date}`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data); // Get HTML response
-        setHtmlContent(data.map_html); // Set the HTML content
-      } else {
-        throw new Error("Failed to fetch HTML");
-      }
-    } catch (error) {
-      setError(error.message); // Set error message if something goes wrong
-    } finally {
-      setLoading(false); // Set loading to false once the API request finishes
+      const isDefault = from_date === "2022-04-02" && to_date === "2022-04-02";
+      const url = isDefault
+        ? "/basic.html"
+        : `http://127.0.0.1:8000/analytics/get-folium?from_date=${from_date}&to_date=${to_date}`;
+
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Failed to fetch map data");
+
+      const html = isDefault
+        ? await response.text()
+        : (await response.json()).map_html;
+
+      setHtmlContent(html);
+    } catch (err) {
+      setError(err.message);
     }
   };
-  useEffect(() => {
-    fetchHtml("2022-04-02", "2022-04-02");
-  }, []);
-  const handleDateChange = (from = "2022-04-02", to = "2022-04-02") => {
-    fetchHtml(from, to);
+  const fetchStateData = async (from_date, to_date) => {
+    try {
+      const url = `http://127.0.0.1:8000/analytics/get-top-cities?from_date=${from_date}&to_date=${to_date}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Failed to fetch state data");
+      const data = await response.json();
+      console.log(data);
+
+      setStateData(data);
+    } catch (error) {
+      console.error("Error fetching state data:", error);
+      setError("Failed to fetch state data");
+    }
   };
-  // Summary statistics
-  const totalSales = regionData.reduce((sum, region) => sum + region.sales, 0);
-  const avgGrowth =
-    regionData.reduce((sum, region) => sum + region.growth, 0) /
-    regionData.length;
+  // useEffect(() => {
+  //   fetchHtml("2022-04-02", "2022-04-02");
+  // }, []);
+
+  const handleDateChange = (from, to) => {
+    setLoading(true);
+    setError(null);
+    console.log(from, to);
+
+    // Call both fetch functions and handle loading state properly
+    Promise.all([
+      fetchStateData(from, to),
+      fetchHtml("2022-04-02", "2022-04-02"),
+    ]).finally(() => {
+      setLoading(false);
+    });
+  };
 
   return (
     <div>
       <h1 className="text-3xl font-bold mb-6">Regional Sales Analysis</h1>
+      <div className="flex items-center gap-2 mb-2 px-4">
+        <p>Select Timeline:</p>
+        <DatePickerWithRange onDateChange={handleDateChange} />
+      </div>
 
-      {/* Summary Cards */}
-      {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-gray-500 text-sm">Total Global Sales</h3>
-          <p className="text-2xl font-bold">
-            ${(totalSales / 1000000).toFixed(2)}M
-          </p>
-        </div>
-
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-gray-500 text-sm">Average Growth Rate</h3>
-          <p className="text-2xl font-bold">{avgGrowth.toFixed(1)}%</p>
-        </div>
-
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-gray-500 text-sm">Top Performing Region</h3>
-          <p className="text-2xl font-bold">
-            {regionData.sort((a, b) => b.sales - a.sales)[0].region}
-          </p>
-        </div>
-      </div> */}
-      {/* <div className="p-8">
-        <DateRangePicker onDateChange={handleDateChange} />
-      </div> */}
-      {/* Render HTML content when fetched */}
-      {!loading && !error && (
-        <div>
-          <h1>Fetched HTML Content:</h1>
-          <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      {loading && (
+        <div className="flex justify-center items-center py-10 w-[60%] h-[500px]">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+          <p className="ml-3 text-lg">Loading map data...</p>
         </div>
       )}
-      {/* World Map */}
-      <div className="bg-white rounded-lg shadow p-6 mb-6 overflow-x-auto">
-        <h2 className="text-xl font-bold mb-4">Global Sales Distribution</h2>
-        <div ref={mapChartRef}></div>
-      </div>
 
-      {/* Top Cities */}
-      <div className="bg-white rounded-lg shadow p-6 overflow-x-auto">
-        <h2 className="text-xl font-bold mb-4">Top Cities by Sales</h2>
-        <div ref={barChartRef}></div>
-      </div>
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+          <p>Error: {error}</p>
+        </div>
+      )}
+
+      {!loading && !error && htmlContent && (
+        <div>
+          <div className="bg-white rounded-lg shadow p-6 overflow-x-auto mb-4">
+            <h2 className="text-xl font-bold mb-2">Sales Distribution Map</h2>
+
+            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+          </div>
+          <div className="bg-white rounded-lg shadow p-6 overflow-x-auto">
+            <h2 className="text-xl font-bold mb-4">Top 10 States by Sales</h2>
+            <div ref={barChartRef}></div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,54 +1,79 @@
-import React from "react";
-import * as DatePicker from "@ark-ui/react/date-picker";
-import { format } from "date-fns";
+"use client";
 
-export function DateRangePicker({ onDateChange }) {
-  const [selected, setSelected] = React.useState();
+import * as React from "react";
+import { addDays, format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+// import { DateRange } from "react-day-picker";
+
+import { cn } from "../../lib/utils";
+import { Button } from "./button";
+import { Calendar } from "./calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+
+export function DatePickerWithRange({ className, onDateChange }) {
+  const [date, setDate] = React.useState({
+    from: new Date(2022, 3, 2),
+    to: addDays(new Date(2022, 3, 2), 0),
+  });
 
   React.useEffect(() => {
-    if (selected?.start && selected?.end) {
-      const from = format(new Date(selected.start), "yyyy-MM-dd");
-      const to = format(new Date(selected.end), "yyyy-MM-dd");
-      onDateChange(from, to);
+    if (!date?.from || !date?.to || !onDateChange) return;
+
+    const fromStr = format(date.from, "yyyy-MM-dd");
+    const toStr = format(date.to, "yyyy-MM-dd");
+
+    // Avoid redundant calls
+    if (
+      prevDateRef.current?.from === fromStr &&
+      prevDateRef.current?.to === toStr
+    ) {
+      return;
     }
-  }, [selected]);
+
+    prevDateRef.current = { from: fromStr, to: toStr };
+    onDateChange(fromStr, toStr);
+  }, [date, onDateChange]);
+
+  const prevDateRef = React.useRef({ from: "", to: "" });
 
   return (
-    <DatePicker.Root
-      selectionMode="range"
-      value={selected}
-      onValueChange={(e) => setSelected(e)}
-    >
-      <DatePicker.Label>Pick a date range</DatePicker.Label>
-      <DatePicker.Control>
-        <DatePicker.Input
-          placeholder="Start date"
-          position="start"
-          className="border p-2 rounded-l"
-        />
-        <DatePicker.Input
-          placeholder="End date"
-          position="end"
-          className="border p-2 rounded-r"
-        />
-      </DatePicker.Control>
-      <DatePicker.Content className="mt-2 border rounded shadow bg-white z-50">
-        <DatePicker.PresetGroup>
-          <DatePicker.Preset value="today">Today</DatePicker.Preset>
-          <DatePicker.Preset value="last7Days">Last 7 Days</DatePicker.Preset>
-        </DatePicker.PresetGroup>
-        <DatePicker.View>
-          <DatePicker.Header>
-            <DatePicker.PrevTrigger>{"<"}</DatePicker.PrevTrigger>
-            <DatePicker.Label />
-            <DatePicker.NextTrigger>{">"}</DatePicker.NextTrigger>
-          </DatePicker.Header>
-          <DatePicker.Table>
-            <DatePicker.TableHead />
-            <DatePicker.TableBody />
-          </DatePicker.Table>
-        </DatePicker.View>
-      </DatePicker.Content>
-    </DatePicker.Root>
+    <div className={cn("grid gap-2", className)}>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            id="date"
+            variant={"outline"}
+            className={cn(
+              "w-[300px] justify-start text-left font-normal",
+              !date && "text-muted-foreground"
+            )}
+          >
+            <CalendarIcon />
+            {date?.from ? (
+              date.to ? (
+                <>
+                  {format(date.from, "LLL dd, y")} -{" "}
+                  {format(date.to, "LLL dd, y")}
+                </>
+              ) : (
+                format(date.from, "LLL dd, y")
+              )
+            ) : (
+              <span>Pick a date</span>
+            )}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar
+            initialFocus
+            mode="range"
+            defaultMonth={date?.from}
+            selected={date}
+            onSelect={setDate}
+            numberOfMonths={2}
+          />
+        </PopoverContent>
+      </Popover>
+    </div>
   );
 }
