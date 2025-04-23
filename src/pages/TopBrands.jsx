@@ -65,6 +65,7 @@ export default function TopBrands() {
 
 
   const filteredData = [...data].slice(0, topN);
+  const [selectedBrand, setSelectedBrand] = useState(null);
 
   // Bar chart
   useEffect(() => {
@@ -85,6 +86,7 @@ export default function TopBrands() {
     const x = d3
       .scaleLinear()
       .domain([0, d3.max(filteredData, d => d.count)])
+      .nice()
       .range([0, width - margin.left - margin.right]);
 
     const y = d3
@@ -97,32 +99,63 @@ export default function TopBrands() {
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
+    // Axes
     g.append("g")
       .attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
       .call(d3.axisBottom(x).ticks(5));
 
-    g.append("g").call(d3.axisLeft(y));
+    g.append("g")
+      .call(d3.axisLeft(y))
+      .selectAll("text")
+      .style("font-size", "12px")
+      .style("font-weight", "500");
 
-    g.selectAll(".bar")
+    // Bars with animation
+    const bars = g.selectAll(".bar")
       .data(filteredData)
       .enter()
       .append("rect")
       .attr("class", "bar")
       .attr("y", d => y(d.brand))
-      .attr("width", d => x(d.count))
       .attr("height", y.bandwidth())
-      .attr("fill", "#10B981");
+      .attr("x", 0)
+      .attr("width", 0)
+      .attr("fill", "#10B981")
+      .on("mouseover", function () {
+        d3.select(this).transition().duration(200).attr("fill", "#059669");
+      })
+      .on("mouseout", function () {
+        d3.select(this).transition().duration(200).attr("fill", "#10B981");
+      })
+      .on("click", (_, d) => {
+        setSelectedBrand(d); // <- This sets selected brand on click
+      });
 
+
+    bars
+      .transition()
+      .duration(800)
+      .delay((_, i) => i * 50)
+      .attr("width", d => x(d.count));
+
+    // Value Labels with fade-in
     g.selectAll(".label")
       .data(filteredData)
       .enter()
       .append("text")
       .text(d => d.count)
-      .attr("x", d => x(d.count) - 5)
+      .attr("x", 0)
       .attr("y", d => y(d.brand) + y.bandwidth() / 2 + 5)
-      .attr("text-anchor", "end")
-      .style("fill", "white")
-      .style("font-size", "12px");
+      .attr("text-anchor", "start")
+      .style("fill", "#fff")
+      .style("font-size", "12px")
+      .style("opacity", 0)
+      .transition()
+      .duration(500)
+      .delay((_, i) => 200 + i * 50)
+      .attr("x", d => x(d.count) - 8)
+      .style("opacity", 1);
+
   }, [filteredData]);
 
   // Pie chart
@@ -144,26 +177,81 @@ export default function TopBrands() {
       .attr("transform", `translate(${width / 2},${height / 2})`);
 
     const pie = d3.pie().value(d => d.count);
-    const arc = d3.arc().innerRadius(0).outerRadius(radius);
+    const arc = d3.arc().innerRadius(70).outerRadius(radius); // donut shape
     const color = d3.scaleOrdinal(d3.schemeTableau10);
+
+    const total = d3.sum(filteredData, d => d.count);
+
+    // Center text elements with initial opacity 0 (fade-in on click)
+    const centerBrand = svg
+      .append("text")
+      .attr("text-anchor", "middle")
+      .attr("y", -10)
+      .attr("font-size", "14px")
+      .attr("fill", "#333")
+      .style("font-weight", "bold")
+      .style("opacity", 0);
+
+    const centerPercent = svg
+      .append("text")
+      .attr("text-anchor", "middle")
+      .attr("y", 12)
+      .attr("font-size", "14px")
+      .attr("fill", "#666")
+      .style("opacity", 0);
 
     const arcs = svg
       .selectAll("arc")
       .data(pie(filteredData))
       .enter()
-      .append("g");
+      .append("g")
+      .attr("class", "arc");
 
     arcs
       .append("path")
-      .attr("d", arc)
       .attr("fill", d => color(d.data.brand))
+      .transition()
+      .duration(800)
+      .attrTween("d", function (d) {
+        const i = d3.interpolate(
+          { startAngle: d.startAngle, endAngle: d.startAngle },
+          d
+        );
+        return function (t) {
+          return arc(i(t));
+        };
+      });
+
+    // Interactivity
+    arcs
+      .selectAll("path")
       .on("mouseover", function () {
         d3.select(this).transition().duration(200).attr("transform", "scale(1.05)");
       })
       .on("mouseout", function () {
         d3.select(this).transition().duration(200).attr("transform", "scale(1)");
+      })
+      .on("click", function (event, d) {
+        const percentage = ((d.data.count / total) * 100).toFixed(1);
+
+        centerBrand
+          .text(
+            d.data.brand.length > 20 ? d.data.brand.slice(0, 17) + "…" : d.data.brand
+          )
+          .transition()
+          .duration(300)
+          .style("opacity", 1);
+
+        centerPercent
+          .text(`${percentage}%`)
+          .transition()
+          .duration(300)
+          .style("opacity", 1);
+
+        event.stopPropagation();
       });
 
+    // Slice labels
     arcs
       .append("text")
       .attr("transform", d => `translate(${arc.centroid(d)})`)
@@ -172,14 +260,38 @@ export default function TopBrands() {
       .attr("fill", "#fff")
       .text(d =>
         d.data.brand.length > 10 ? d.data.brand.slice(0, 7) + "…" : d.data.brand
-      );
+      )
+      .style("opacity", 0)
+      .transition()
+      .delay((_, i) => i * 100)
+      .duration(500)
+      .style("opacity", 1);
+
+    // Clear center on background click
+    d3.select(pieRef.current)
+      .select("svg")
+      .on("click", () => {
+        centerBrand.transition().duration(300).style("opacity", 0);
+        centerPercent.transition().duration(300).style("opacity", 0);
+      });
   }, [filteredData]);
+
+
+
 
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">Top Brands Dashboard</h1>
 
       <div className="flex items-center mb-4 gap-4">
+        {selectedBrand && (
+          <div className="mt-6 p-4 bg-emerald-50 border border-emerald-200 rounded-lg shadow">
+            <h3 className="text-lg font-semibold text-emerald-800">Selected Brand</h3>
+            <p className="text-gray-700">Brand: <strong>{selectedBrand.brand}</strong></p>
+            <p className="text-gray-700">Count: <strong>{selectedBrand.count}</strong></p>
+          </div>
+        )}
+
         <label htmlFor="topN" className="font-medium text-gray-700">
           Top Brands:
         </label>

@@ -114,68 +114,118 @@ export default function TopItems() {
             .style("fill", "white")
             .style("font-size", "12px");
     }, [filteredData]);
+      
+      
+      
 
     // Pie Chart
     useEffect(() => {
         if (!pieRef.current || filteredData.length === 0) return;
-
+      
         d3.select(pieRef.current).selectAll("*").remove();
-
+      
         const width = 300;
         const height = 300;
         const radius = Math.min(width, height) / 2;
-
+        const innerRadius = 80; // much smaller hole
+      
         const svg = d3
-            .select(pieRef.current)
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .append("g")
-            .attr("transform", `translate(${width / 2},${height / 2})`);
-
+          .select(pieRef.current)
+          .append("svg")
+          .attr("width", width)
+          .attr("height", height)
+          .append("g")
+          .attr("transform", `translate(${width / 2},${height / 2})`);
+      
         const pie = d3.pie().value(d => d.quantity);
-        const arc = d3.arc().innerRadius(0).outerRadius(radius);
-        const arcExpanded = d3.arc().innerRadius(0).outerRadius(radius + 10);
+        const arc = d3.arc().innerRadius(innerRadius).outerRadius(radius);
+        const arcExpanded = d3.arc().innerRadius(innerRadius).outerRadius(radius + 10);
         const color = d3.scaleOrdinal(d3.schemeCategory10);
-
+      
         const total = d3.sum(filteredData, d => d.quantity);
-        const pieData = pie(filteredData);
-
+      
+        // Center text elements
+        const centerName = svg
+          .append("text")
+          .attr("text-anchor", "middle")
+          .attr("y", -10)
+          .attr("font-size", "14px")
+          .attr("fill", "#333")
+          .style("font-weight", "bold")
+          .style("opacity", 0);
+      
+        const centerPercent = svg
+          .append("text")
+          .attr("text-anchor", "middle")
+          .attr("y", 12)
+          .attr("font-size", "14px")
+          .attr("fill", "#666")
+          .style("opacity", 0);
+      
         const arcs = svg
-            .selectAll("arc")
-            .data(pieData)
-            .enter()
-            .append("g")
-            .attr("cursor", "pointer");
-
-        arcs.append("path")
-            .attr("d", d =>
-                selectedProduct && d.data.product_name === selectedProduct.name
-                    ? arcExpanded(d)
-                    : arc(d)
-            )
-            .attr("fill", d => color(d.data.product_name))
-            .on("click", (event, d) => {
-                const ratio = ((d.data.quantity / total) * 100).toFixed(2);
-                setSelectedProduct({
-                    name: d.data.product_name,
-                    quantity: d.data.quantity,
-                    ratio,
-                });
-            });
-
-        arcs.append("text")
-            .attr("transform", d => `translate(${arc.centroid(d)})`)
-            .attr("text-anchor", "middle")
-            .attr("font-size", "10px")
-            .attr("fill", "#fff")
-            .text(d =>
-                d.data.product_name.length > 10
-                    ? d.data.product_name.slice(0, 7) + "…"
-                    : d.data.product_name
+          .selectAll("arc")
+          .data(pie(filteredData))
+          .enter()
+          .append("g")
+          .attr("class", "arc");
+      
+        arcs
+          .append("path")
+          .attr("fill", d => color(d.data.product_name))
+          .transition()
+          .duration(800)
+          .attrTween("d", function(d) {
+            const interp = d3.interpolate(
+              { startAngle: d.startAngle, endAngle: d.startAngle },
+              d
             );
-    }, [filteredData, selectedProduct]);
-
+            return t => arc(interp(t));
+          });
+      
+        arcs.selectAll("path")
+          .on("mouseover", function() {
+            d3.select(this).transition().duration(200).attr("transform", "scale(1.05)");
+          })
+          .on("mouseout", function() {
+            d3.select(this).transition().duration(200).attr("transform", "scale(1)");
+          })
+          .on("click", (event, d) => {
+            const pct = ((d.data.quantity / total) * 100).toFixed(1);
+            centerName
+              .text(d.data.product_name.length > 20
+                ? d.data.product_name.slice(0, 17) + "…"
+                : d.data.product_name
+              )
+              .transition().duration(300).style("opacity", 1);
+            centerPercent
+              .text(`${pct}%`)
+              .transition().duration(300).style("opacity", 1);
+            event.stopPropagation();
+          });
+      
+        arcs
+          .append("text")
+          .attr("transform", d => `translate(${arc.centroid(d)})`)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "10px")
+          .attr("fill", "#fff")
+          .text(d =>
+            d.data.product_name.length > 10
+              ? d.data.product_name.slice(0, 7) + "…"
+              : d.data.product_name
+          )
+          .style("opacity", 0)
+          .transition().delay((_, i) => i * 100).duration(500).style("opacity", 1);
+      
+        // Clear center on background click
+        d3.select(pieRef.current).select("svg")
+          .on("click", () => {
+            centerName.transition().duration(300).style("opacity", 0);
+            centerPercent.transition().duration(300).style("opacity", 0);
+          });
+      }, [filteredData, selectedProduct]);
+      
+    
     return (
         <div className="p-6">
             <h1 className="text-3xl font-bold mb-6">Top Selling Items Dashboard</h1>
@@ -200,14 +250,14 @@ export default function TopItems() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2 bg-white rounded-lg shadow p-6">
-                    <h2 className="text-xl font-bold mb-4">Top Items (Bar Chart)</h2>
+                    <h2 className="text-xl font-bold mb-4">Top Sold Items</h2>
                     <div className="overflow-x-auto">
                         <div ref={barRef} className="w-full" />
                     </div>
                 </div>
 
                 <div className="bg-white rounded-lg shadow p-6">
-                    <h2 className="text-xl font-bold mb-4">Sales Share (Pie Chart)</h2>
+                    <h2 className="text-xl font-bold mb-4">Sales Share</h2>
                     <div>
                         <div ref={pieRef}></div>
                         {selectedProduct && (
