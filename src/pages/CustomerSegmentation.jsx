@@ -1,325 +1,325 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
 export default function CustomerSegmentation() {
   const bubbleChartRef = useRef();
   const heatmapRef = useRef();
+  const [selectedSegment, setSelectedSegment] = useState(null);
 
-  // Mock data for customer segments
-  const segmentData = [
-    {
-      id: 1,
-      segment: "High Value",
-      count: 1250,
-      avgOrderValue: 120,
-      frequency: 12,
-      recency: 5,
-    },
-    {
-      id: 2,
-      segment: "Loyal",
-      count: 3500,
-      avgOrderValue: 75,
-      frequency: 8,
-      recency: 10,
-    },
-    {
-      id: 3,
-      segment: "Potential Loyalists",
-      count: 4800,
-      avgOrderValue: 60,
-      frequency: 4,
-      recency: 20,
-    },
-    {
-      id: 4,
-      segment: "New Customers",
-      count: 6200,
-      avgOrderValue: 45,
-      frequency: 1,
-      recency: 15,
-    },
-    {
-      id: 5,
-      segment: "Promising",
-      count: 5100,
-      avgOrderValue: 55,
-      frequency: 2,
-      recency: 25,
-    },
-    {
-      id: 6,
-      segment: "Need Attention",
-      count: 2800,
-      avgOrderValue: 65,
-      frequency: 3,
-      recency: 45,
-    },
-    {
-      id: 7,
-      segment: "About to Sleep",
-      count: 2100,
-      avgOrderValue: 50,
-      frequency: 5,
-      recency: 60,
-    },
-    {
-      id: 8,
-      segment: "At Risk",
-      count: 1900,
-      avgOrderValue: 80,
-      frequency: 6,
-      recency: 90,
-    },
-    {
-      id: 9,
-      segment: "Hibernating",
-      count: 3200,
-      avgOrderValue: 40,
-      frequency: 2,
-      recency: 120,
-    },
-    {
-      id: 10,
-      segment: "Lost",
-      count: 4500,
-      avgOrderValue: 30,
-      frequency: 1,
-      recency: 180,
-    },
-  ];
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [categories, setCategories] = useState([]);
+  const [cohortGroupedData, setCohortGroupedData] = useState(new Map());
 
-  // Cohort retention data
-  const cohortData = [
-    { month: "Jan", m0: 100, m1: 80, m2: 70, m3: 65, m4: 60, m5: 58 },
-    { month: "Feb", m0: 100, m1: 82, m2: 72, m3: 68, m4: 62 },
-    { month: "Mar", m0: 100, m1: 85, m2: 75, m3: 70 },
-    { month: "Apr", m0: 100, m1: 83, m2: 73 },
-    { month: "May", m0: 100, m1: 87 },
-    { month: "Jun", m0: 100 },
-  ];
-
-  // Draw bubble chart
   useEffect(() => {
-    if (!bubbleChartRef.current) return;
+    d3.csv("/cohort_analysis_data2.csv").then((data) => {
+      data.forEach(d => {
+        d.final_customer_count = +d.final_customer_count;
+        d.cohort_index = +d.cohort_index;
+      });
 
-    // Clear previous chart
-    d3.select(bubbleChartRef.current).selectAll("*").remove();
+      const categories = Array.from(new Set(data.map(d => d.l0_category)));
+      const grouped = d3.group(data, d => d.l0_category);
 
-    const width = 700;
-    const height = 500;
-
-    const svg = d3
-      .select(bubbleChartRef.current)
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .append("g")
-      .attr("transform", `translate(0,0)`);
-
-    // Scale for bubble size
-    const size = d3
-      .scaleLinear()
-      .domain([0, d3.max(segmentData, (d) => d.count)])
-      .range([20, 80]);
-
-    // Scale for x-axis (frequency)
-    const x = d3
-      .scaleLinear()
-      .domain([0, d3.max(segmentData, (d) => d.frequency) + 2])
-      .range([50, width - 50]);
-
-    // Scale for y-axis (recency, inverted so smaller values are on top)
-    const y = d3
-      .scaleLinear()
-      .domain([0, d3.max(segmentData, (d) => d.recency) + 10])
-      .range([50, height - 50]);
-
-    // Color scale based on average order value
-    const color = d3
-      .scaleSequential()
-      .domain([
-        d3.min(segmentData, (d) => d.avgOrderValue),
-        d3.max(segmentData, (d) => d.avgOrderValue),
-      ])
-      .interpolator(d3.interpolateBlues);
-
-    // Add X axis
-    svg
-      .append("g")
-      .attr("transform", `translate(0,${height - 30})`)
-      .call(d3.axisBottom(x).ticks(5));
-
-    // Add X axis label
-    svg
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("x", width / 2)
-      .attr("y", height - 5)
-      .text("Purchase Frequency");
-
-    // Add Y axis
-    svg
-      .append("g")
-      .attr("transform", `translate(30,0)`)
-      .call(d3.axisLeft(y).ticks(5));
-
-    // Add Y axis label
-    svg
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("transform", `translate(10,${height / 2}) rotate(-90)`)
-      .text("Days Since Last Purchase");
-
-    // Add bubbles
-    svg
-      .selectAll(".bubble")
-      .data(segmentData)
-      .enter()
-      .append("circle")
-      .attr("class", "bubble")
-      .attr("cx", (d) => x(d.frequency))
-      .attr("cy", (d) => y(d.recency))
-      .attr("r", (d) => size(d.count) / 2)
-      .style("fill", (d) => color(d.avgOrderValue))
-      .style("opacity", 0.7)
-      .attr("stroke", "black")
-      .style("stroke-width", 1);
-
-    // Add labels to bubbles
-    svg
-      .selectAll(".label")
-      .data(segmentData)
-      .enter()
-      .append("text")
-      .attr("class", "label")
-      .attr("x", (d) => x(d.frequency))
-      .attr("y", (d) => y(d.recency))
-      .text((d) => d.segment)
-      .attr("text-anchor", "middle")
-      .style("font-size", "12px")
-      .style("pointer-events", "none");
-
-    // Add title
-    svg
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("x", width / 2)
-      .attr("y", 20)
-      .style("font-size", "16px")
-      .style("font-weight", "bold")
-      .text("Customer Segments by Frequency and Recency");
-
-    // Add legend for bubble size
-    svg
-      .append("text")
-      .attr("x", 50)
-      .attr("y", 60)
-      .style("font-size", "12px")
-      .text("Bubble size: Number of customers");
-
-    // Add legend for color
-    svg
-      .append("text")
-      .attr("x", 50)
-      .attr("y", 80)
-      .style("font-size", "12px")
-      .text("Color intensity: Average Order Value");
+      setCategories(["All", ...categories.filter(cat => cat !== "All")]);
+      setCohortGroupedData(grouped);
+    });
   }, []);
 
-  // Draw cohort heatmap
+  const segmentData = [
+    { segment: "Champions", count: 1115139, recency: 10.15, frequency: 8.2, monetary: 3577621000 },
+    { segment: "Loyal", count: 361669, recency: 28.13, frequency: 3.9, monetary: 168031500 },
+    { segment: "Potential Loyalist", count: 1441069, recency: 23.99, frequency: 3.4, monetary: 65513250 },
+    { segment: "New Customers", count: 449701, recency: 23.53, frequency: 2.8, monetary: 12160360 },
+    { segment: "Promising", count: 896355, recency: 18.61, frequency: 2.2, monetary: 223429900 },
+    { segment: "Need Attention", count: 509149, recency: 28.11, frequency: 1.8, monetary: 79610850 },
+    { segment: "About To Sleep", count: 435026, recency: 40.07, frequency: 1.6, monetary: 12667900 },
+    { segment: "Hibernating customers", count: 1247367, recency: 51.54, frequency: 1.4, monetary: 53191600 },
+    { segment: "At Risk", count: 1206999, recency: 58.89, frequency: 1.0, monetary: 274926300 },
+    { segment: "Cannot Lose Them", count: 668758, recency: 66.44, frequency: 1.1, monetary: 263660100 },
+    { segment: "Lost customers", count: 438160, recency: 71.85, frequency: 1.05, monetary: 8798432 }
+  ];
+
   useEffect(() => {
-    if (!heatmapRef.current) return;
-
-    // Clear previous chart
-    d3.select(heatmapRef.current).selectAll("*").remove();
-
-    const margin = { top: 50, right: 30, bottom: 50, left: 50 };
-    const width = 600 - margin.left - margin.right;
-    const height = 300 - margin.top - margin.bottom;
-
+    if (!bubbleChartRef.current) return;
+  
+    d3.select(bubbleChartRef.current).selectAll("*").remove();
+  
+    const margin = { top: 60, right: 220, bottom: 50, left: 60 };
+    const width = 900 - margin.left - margin.right;
+    const height = 600 - margin.top - margin.bottom;
+  
     const svg = d3
-      .select(heatmapRef.current)
+      .select(bubbleChartRef.current)
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
-
-    // Get all cohort months (rows)
-    const cohortMonths = cohortData.map((d) => d.month);
-
-    // Get all retention months (columns)
-    const retentionMonths = Object.keys(cohortData[0])
-      .filter((key) => key.startsWith("m"))
-      .sort();
-
-    // Create scales
-    const x = d3
-      .scaleBand()
-      .range([0, width])
-      .domain(retentionMonths)
-      .padding(0.05);
-
-    const y = d3
-      .scaleBand()
-      .range([0, height])
-      .domain(cohortMonths)
-      .padding(0.05);
-
-    // Build color scale
-    const colorScale = d3
-      .scaleSequential()
-      .interpolator(d3.interpolateGreens)
-      .domain([0, 100]);
-
-    // Add X axis
-    svg
-      .append("g")
+  
+    const segmentColorMap = {
+      "Potential Loyalist": "#1f77b4",
+      "Hibernating customers": "#aec7e8",
+      "At Risk": "#ff7f0e",
+      "Champions": "#2ca02c",
+      "Promising": "#c49c94",
+      "Cannot Lose Them": "#d62728",
+      "Need Attention": "#9467bd",
+      "New Customers": "#8c564b",
+      "Lost customers": "#e377c2",
+      "About To Sleep": "#7f7f7f",
+      "Loyal": "#17becf"
+    };
+  
+    const tooltip = d3.select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("position", "absolute")
+      .style("background", "#333")
+      .style("color", "#fff")
+      .style("padding", "8px")
+      .style("border-radius", "4px")
+      .style("font-size", "12px")
+      .style("display", "none")
+      .style("pointer-events", "none");
+  
+    const adjustedData = segmentData.map((d) => {
+      return { ...d, Frequency: d.frequency };
+    });
+  
+    const x = d3.scaleLinear()
+      .domain([0, d3.max(adjustedData, (d) => d.Frequency) + 2])
+      .range([0, width]);
+  
+    const y = d3.scaleLinear()
+      .domain([0, d3.max(adjustedData, (d) => d.recency) + 10])
+      .range([0, height]);
+  
+    const size = d3.scaleSqrt()
+      .domain([0, d3.max(adjustedData, (d) => d.count)])
+      .range([5, 30]);
+  
+    svg.append("g")
       .attr("transform", `translate(0,${height})`)
-      .call(d3.axisBottom(x).tickFormat((d) => `Month ${d.slice(1)}`));
-
-    // Add Y axis
-    svg.append("g").call(d3.axisLeft(y));
-
-    // Add title
-    svg
-      .append("text")
+      .call(d3.axisBottom(x));
+  
+    svg.append("g")
+      .call(d3.axisLeft(y));
+  
+    svg.append("text")
       .attr("x", width / 2)
-      .attr("y", -20)
+      .attr("y", -30)
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
       .style("font-weight", "bold")
-      .text("Cohort Retention Analysis (%)");
+      .text("Customer Segments by Frequency and Recency");
+  
+    // X-axis label
+    svg.append("text")
+      .attr("x", width / 2)
+      .attr("y", height + 40)
+      .attr("text-anchor", "middle")
+      .style("font-size", "14px")
+      .text("Frequency");
+  
+    // Y-axis label
+    svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -height / 2)
+      .attr("y", -40)
+      .attr("text-anchor", "middle")
+      .style("font-size", "14px")
+      .text("Recency (days)");
+  
+    svg.selectAll("circle")
+      .data(adjustedData)
+      .enter()
+      .append("circle")
+      .attr("cx", (d) => x(d.Frequency))
+      .attr("cy", (d) => y(d.recency))
+      .attr("r", (d) => size(d.count))
+      .style("fill", (d) => segmentColorMap[d.segment] || "#ccc")
+      .style("opacity", 0.8)
+      .attr("stroke", "black")
+      .on("mouseover", function (event, d) {
+        tooltip
+          .style("display", "block")
+          .html(`<strong>${d.segment}</strong><br/>Customers: ${d.count}<br/>Recency: ${d.recency} days<br/>Frequency: ${d.frequency}<br/>Monetary: ₹${(d.monetary / 1e6).toFixed(2)}M`);
+      })
+      .on("mousemove", function (event) {
+        tooltip.style("left", event.pageX + 10 + "px").style("top", event.pageY - 30 + "px");
+      })
+      .on("mouseout", function () {
+        tooltip.style("display", "none");
+      })
+      .on("click", (event, d) => setSelectedSegment(d));
+  
+    // Legend
+    const legend = svg.append("g")
+      .attr("transform", `translate(${width + 20}, 20)`);
+  
+    Object.entries(segmentColorMap).forEach(([segment, color], i) => {
+      legend.append("circle")
+        .attr("cx", 0)
+        .attr("cy", i * 24)
+        .attr("r", 6)
+        .style("fill", color);
+  
+      legend.append("text")
+        .attr("x", 15)
+        .attr("y", i * 24 + 4)
+        .text(segment)
+        .attr("font-size", "12px")
+        .attr("alignment-baseline", "middle");
+    });
+  
+  }, []);
+  
 
-    // Create the heatmap cells
-    cohortData.forEach((d) => {
-      retentionMonths.forEach((month) => {
-        if (d[month] !== undefined) {
-          svg
-            .append("rect")
-            .attr("x", x(month))
-            .attr("y", y(d.month))
-            .attr("width", x.bandwidth())
-            .attr("height", y.bandwidth())
-            .style("fill", colorScale(d[month]))
-            .style("stroke", "white")
-            .style("stroke-width", 1);
-
-          svg
-            .append("text")
-            .attr("x", x(month) + x.bandwidth() / 2)
-            .attr("y", y(d.month) + y.bandwidth() / 2)
-            .attr("text-anchor", "middle")
-            .attr("dominant-baseline", "central")
-            .style("font-size", "11px")
-            .style("fill", d[month] > 50 ? "white" : "black")
-            .text(`${d[month]}%`);
+  useEffect(() => {
+    if (!heatmapRef.current) return;
+  
+    d3.select(heatmapRef.current).selectAll("*").remove();
+  
+    const drawHeatmap = (data, isPreprocessed = false) => {
+      const cohortWeeks = Array.from(new Set(data.map(d => d.cohort_week))).sort();
+      const weekIndexes = Array.from(new Set(data.map(d => +d.cohort_index))).sort((a, b) => a - b);
+  
+      const cellSize = 38;
+      const margin = { top: 50, right: 80, bottom: 50, left: 180 };
+      const width = weekIndexes.length * cellSize;
+      const height = cohortWeeks.length * cellSize;
+  
+      const svg = d3.select(heatmapRef.current)
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+  
+        const x = d3.scaleBand()
+        .domain(weekIndexes)
+        .range([0, width])
+        .padding(0.09);  
+      
+  
+      const y = d3.scaleBand()
+        .domain(cohortWeeks)
+        .range([0, height])
+        .padding(0.09);
+  
+      const colorScale = d3.scaleLinear()
+        .domain([0, 100])
+        .range(["#f0f9e8", "#0868ac"]);
+  
+      svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x).tickFormat(d => `Week ${d}`));
+  
+      svg.append("g")
+        .call(d3.axisLeft(y));
+  
+      svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", -20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("font-weight", "bold")
+        .text(`Cohort Retention Heatmap (Percentage) for Category: ${selectedCategory}`);
+  
+      svg.selectAll("rect.cell")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", d => x(+d.cohort_index))
+        .attr("y", d => y(d.cohort_week))
+        .attr("width", x.bandwidth())
+        .attr("height", y.bandwidth())
+        .style("fill", d => colorScale(+d.percent))
+        .style("stroke", "#fff");
+  
+      svg.selectAll("text.cell-label")
+        .data(data)
+        .enter()
+        .append("text")
+        .attr("x", d => x(+d.cohort_index) + x.bandwidth() / 2)
+        .attr("y", d => y(d.cohort_week) + y.bandwidth() / 2)
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "central")
+        .style("font-size", "13px")
+        .style("fill", d => +d.percent > 50 ? "#fff" : "#222")
+        .text(d => +d.percent > 0 ? d.percent : "");
+  
+      // Color legend
+      const defs = svg.append("defs");
+      const linearGradient = defs.append("linearGradient")
+        .attr("id", "legend-gradient")
+        .attr("x1", "0%").attr("x2", "0%")
+        .attr("y1", "100%").attr("y2", "0%");
+      linearGradient.append("stop").attr("offset", "0%").attr("stop-color", "#f0f9e8");
+      linearGradient.append("stop").attr("offset", "100%").attr("stop-color", "#0868ac");
+  
+      const legendHeight = 200;
+      const legendWidth = 15;
+      svg.append("rect")
+        .attr("x", width + 30)
+        .attr("y", 10)
+        .attr("width", legendWidth)
+        .attr("height", legendHeight)
+        .style("fill", "url(#legend-gradient)");
+  
+      const legendScale = d3.scaleLinear().domain([0, 100]).range([legendHeight + 10, 10]);
+      const legendAxis = d3.axisRight(legendScale).ticks(5).tickFormat(d => d + "%");
+      svg.append("g")
+        .attr("class", "legend axis")
+        .attr("transform", `translate(${width + 30 + legendWidth},0)`)
+        .call(legendAxis);
+    };
+  
+    if (selectedCategory === "All") {
+      d3.csv("/processed_all_cohort.csv").then(data => {
+        data.forEach(d => {
+          d.cohort_index = +d.cohort_index;
+          d.percent = +d.percent;
+        });
+        drawHeatmap(data, true);
+      });
+    } else {
+      const rawData = cohortGroupedData.get(selectedCategory) || [];
+      const cohortSizeMap = {};
+      rawData.forEach(d => {
+        if (+d.cohort_index === 0) {
+          cohortSizeMap[d.cohort_week] = +d.final_customer_count;
         }
       });
-    });
-  }, []);
-
+  
+      const dataMap = new Map();
+      rawData.forEach(d => {
+        const key = `${d.cohort_week}-${+d.cohort_index}`;
+        dataMap.set(key, +d.final_customer_count);
+      });
+  
+      const cohortWeeks = Array.from(new Set(rawData.map(d => d.cohort_week))).sort();
+      const weekIndexes = Array.from(new Set(rawData.map(d => +d.cohort_index))).sort((a, b) => a - b);
+  
+      const percentData = [];
+      cohortWeeks.forEach(week => {
+        weekIndexes.forEach(index => {
+          const key = `${week}-${index}`;
+          const count = dataMap.get(key) || 0;
+          const base = cohortSizeMap[week] || 0;
+          percentData.push({
+            cohort_week: week,
+            cohort_index: index,
+            percent: base > 0 ? +(count / base * 100).toFixed(1) : 0.1
+          });
+        });
+      });      
+  
+      drawHeatmap(percentData);
+    }
+  }, [selectedCategory, cohortGroupedData]);
+  
+  
   return (
     <div>
       <h1 className="text-3xl font-bold mb-6">Customer Segmentation</h1>
@@ -338,8 +338,36 @@ export default function CustomerSegmentation() {
         <p className="mb-4">
           This heatmap shows customer retention rates by cohort over time.
         </p>
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          className="mb-4 px-3 py-2 border rounded"
+        >
+          {categories.map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
         <div ref={heatmapRef} className="overflow-x-auto"></div>
       </div>
+
+      {selectedSegment && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-[90%] max-w-md">
+            <h3 className="text-lg font-bold mb-4">{selectedSegment.segment}</h3>
+            <p><strong>Customers:</strong> {selectedSegment.count}</p>
+            <p><strong>Frequency:</strong> {selectedSegment.frequency}</p>
+            <p><strong>Recency:</strong> {selectedSegment.recency}</p>
+            <p><strong>Monetary:</strong> ₹{(selectedSegment.monetary / 1e6).toFixed(2)}M</p>
+            <button
+              onClick={() => setSelectedSegment(null)}
+              className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
