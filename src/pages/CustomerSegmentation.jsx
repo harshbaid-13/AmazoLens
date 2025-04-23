@@ -44,7 +44,7 @@ export default function CustomerSegmentation() {
   
     d3.select(bubbleChartRef.current).selectAll("*").remove();
   
-    const margin = { top: 60, right: 220, bottom: 50, left: 60 };
+    const margin = { top: 60, right: 220, bottom: 50, left: 100 };
     const width = 900 - margin.left - margin.right;
     const height = 600 - margin.top - margin.bottom;
   
@@ -100,10 +100,14 @@ export default function CustomerSegmentation() {
   
     svg.append("g")
       .attr("transform", `translate(0,${height})`)
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+      .style("font-size", "12px");
   
     svg.append("g")
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y))
+      .selectAll("text")
+      .style("font-size", "12px");
   
     svg.append("text")
       .attr("x", width / 2)
@@ -168,7 +172,7 @@ export default function CustomerSegmentation() {
         .attr("x", 15)
         .attr("y", i * 24 + 4)
         .text(segment)
-        .attr("font-size", "12px")
+        .attr("font-size", "14px")
         .attr("alignment-baseline", "middle");
     });
   
@@ -184,7 +188,7 @@ export default function CustomerSegmentation() {
       const cohortWeeks = Array.from(new Set(data.map(d => d.cohort_week))).sort();
       const weekIndexes = Array.from(new Set(data.map(d => +d.cohort_index))).sort((a, b) => a - b);
   
-      const cellSize = 38;
+      const cellSize = 40;
       const margin = { top: 50, right: 80, bottom: 50, left: 180 };
       const width = weekIndexes.length * cellSize;
       const height = cohortWeeks.length * cellSize;
@@ -211,12 +215,21 @@ export default function CustomerSegmentation() {
         .domain([0, 100])
         .range(["#f0f9e8", "#0868ac"]);
   
-      svg.append("g")
+        svg.append("g")
         .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x).tickFormat(d => `Week ${d}`));
-  
+        .call(d3.axisBottom(x).tickFormat(d => `Week ${d}`)
+        .tickValues(weekIndexes.filter((_, i) => i % 2 === 0)))
+        
+        .selectAll("text")
+        .style("font-size", "12px")  // Increase font size
+        .attr("dy", "1em")           // Increase distance from axis
+      
       svg.append("g")
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y))
+        .selectAll("text")
+        .style("font-size", "12px")  // Increase font size
+        .attr("dx", "-0.5em");       // Increase distance from axis
+      
   
       svg.append("text")
         .attr("x", width / 2)
@@ -258,7 +271,7 @@ export default function CustomerSegmentation() {
       linearGradient.append("stop").attr("offset", "0%").attr("stop-color", "#f0f9e8");
       linearGradient.append("stop").attr("offset", "100%").attr("stop-color", "#0868ac");
   
-      const legendHeight = 200;
+      const legendHeight = 300;
       const legendWidth = 15;
       svg.append("rect")
         .attr("x", width + 30)
@@ -275,14 +288,39 @@ export default function CustomerSegmentation() {
         .call(legendAxis);
     };
   
-    if (selectedCategory === "All") {
-      d3.csv("/processed_all_cohort.csv").then(data => {
-        data.forEach(d => {
+    //console.log( );
+    if (selectedCategory === "All" && heatmapRef.current === null) {
+      d3.csv("/processed_all_cohort.csv").then(rawData => {
+        // Convert data types
+        rawData.forEach(d => {
           d.cohort_index = +d.cohort_index;
           d.percent = +d.percent;
         });
-        drawHeatmap(data, true);
+      
+        // Build set of all cohort weeks and index values
+        const cohortWeeks = Array.from(new Set(rawData.map(d => d.cohort_week))).sort();
+        const weekIndexes = Array.from(new Set(rawData.map(d => d.cohort_index))).sort((a, b) => a - b);
+      
+        // Create a lookup map of the original data
+        const dataMap = new Map(rawData.map(d => [`${d.cohort_week}-${d.cohort_index}`, d.percent]));
+      
+        // Fill in missing lower-triangle values
+        const filledData = [];
+        cohortWeeks.forEach(week => {
+          weekIndexes.forEach(index => {
+            const key = `${week}-${index}`;
+            filledData.push({
+              cohort_week: week,
+              cohort_index: index,
+              percent: dataMap.has(key) ? dataMap.get(key) : 0  // fallback value for visual continuity
+            });
+          });
+        });
+      
+        // Now draw the heatmap using the padded data
+        drawHeatmap(filledData, true);
       });
+      
     } else {
       const rawData = cohortGroupedData.get(selectedCategory) || [];
       const cohortSizeMap = {};
