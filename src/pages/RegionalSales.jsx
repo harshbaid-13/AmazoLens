@@ -82,13 +82,7 @@ export default function RegionalSales() {
       .attr("x", 0)
       .attr("height", y.bandwidth())
       .attr("width", (d) => x(d.total_price))
-      .attr("fill", "#808080")
-      .on("mouseover", function () {
-        d3.select(this).attr("fill", "#606060");
-      })
-      .on("mouseout", function () {
-        d3.select(this).attr("fill", "#808080");
-      });
+      .attr("fill", "#0868ac");
 
     // Add bar labels
     svg
