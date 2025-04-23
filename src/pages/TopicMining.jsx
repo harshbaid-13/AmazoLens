@@ -362,6 +362,16 @@ export default function TopicMining() {
         </div>
       </div>
 
+      <div style={{ width: "100%", minHeight: 600 }}>
+        <iframe
+          src="/count_lda_approach.html"
+          title="LDA Visualization"
+          width="100%"
+          height={900}
+          style={{ border: "none" }}
+        />
+      </div>
+
       {/* Topic Trends */}
       <div className="bg-white rounded-lg shadow p-6">
         <h2 className="text-xl font-bold mb-4">Topic Trends Over Time</h2>
