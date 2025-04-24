@@ -25,6 +25,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
     { name: "Topic Mining", path: "/topic-mining", icon: "📝" },
     { name: "Top Brands", path: "/top-brands", icon: "👔" },
     { name: "Top Items", path: "/top-items", icon: "🚚" },
+    { name: "Forecasting", path: "/forecasting", icon: "🔮" },
   ];
 
   return (
