@@ -10,6 +10,7 @@ import SentimentAnalysis from "./pages/SentimentAnalysis";
 import TopicMining from "./pages/TopicMining";
 import TopBrands from "./pages/TopBrands";
 import TopItems from "./pages/PriceItems";
+import Forecasting from "./pages/Forecasting";
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -28,10 +29,7 @@ export default function App() {
               path="/customer-segmentation"
               element={<CustomerSegmentation />}
             />
-            <Route
-              path="/market-basket"
-              element={<MarketBasket />}
-            />
+            <Route path="/market-basket" element={<MarketBasket />} />
             <Route path="/regional-sales" element={<RegionalSales />} />
             <Route
               path="/product-recommendation"
@@ -41,6 +39,7 @@ export default function App() {
             <Route path="/topic-mining" element={<TopicMining />} />
             <Route path="/top-brands" element={<TopBrands />} />
             <Route path="/top-items" element={<TopItems />} />
+            <Route path="/forecasting" element={<Forecasting />} />
           </Routes>
         </div>
       </div>
