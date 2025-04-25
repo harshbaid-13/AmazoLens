@@ -5,7 +5,7 @@ import RaceBarChart from "../components/RaceBarChart";
 import "../styles/regionalsales.css";
 import DrillDownPie from "../components/DashboardPieChart";
 import WeeklySalesBarChart from "../components/DashboardBarChart";
-
+import DrillDownPieChart from "../components/DrillDownPieChart.jsx";
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   function formatMoney(val) {
@@ -212,6 +212,13 @@ export default function Dashboard() {
         </h2> */}
         <RaceBarChart />
       </div>
+      <div className="w-full px-4 sm:px-6 md:px-8 py-6 bg-white rounded-lg shadow mb-4">
+        <h2 className="text-xl font-bold mb-4 text-center">Terraview: Multilevel Sales Map</h2>
+        <div className="flex justify-center">
+          <DrillDownPieChart />
+        </div>
+      </div>
+
     </div>
   );
 }
