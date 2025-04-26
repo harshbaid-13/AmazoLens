@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import cloud from "d3-cloud";
 import * as d3 from "d3";
-
+import TSNEPlot from "../components/tsneplot";
 export default function TopicMining() {
   const wordCloudRef = useRef();
   const topicGraphRef = useRef();
@@ -11,6 +11,7 @@ export default function TopicMining() {
   const [categories, setCategories] = useState([]);
   const [topicData, setTopicData] = useState({});
   const [topicTrends, setTopicTrends] = useState([]);
+  const [tsneData, setTsneData] = useState([]);
 
   // Fetch categories on component mount
   useEffect(() => {
@@ -37,10 +38,25 @@ export default function TopicMining() {
     };
     fetchCategories();
   }, []);
+  const generateMockTSNEData = () => {
+    // Generate 100 random data points for t-SNE (x, y)
+    let mockData = [];
+    for (let i = 0; i < 100; i++) {
+      mockData.push({
+        x: Math.random() * 500, // Random x value between 0 and 500
+        y: Math.random() * 400, // Random y value between 0 and 400
+      });
+    }
+    setTsneData(mockData);
+  };
+
+
   // Draw word cloud
   useEffect(() => {
+    generateMockTSNEData();
     if (!wordCloudRef.current) return;
     if (Object.keys(topicData).length === 0) return;
+    
 
     // Clear previous chart
     d3.select(wordCloudRef.current).selectAll("*").remove();
@@ -370,6 +386,11 @@ export default function TopicMining() {
           height={900}
           style={{ border: "none" }}
         />
+      </div>
+      {/* t-SNE Plot */}
+      <div className="bg-white rounded-lg shadow p-6">
+        <h2 className="text-xl font-bold mb-4">t-SNE Visualization of Reviews</h2>
+        <TSNEPlot selectedCategory={selectedCategory}  />
       </div>
 
       {/* Topic Trends */}
