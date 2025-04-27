@@ -9,9 +9,9 @@ import DrillDownPieChart from "../components/DrillDownPieChart.jsx";
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   function formatMoney(val) {
-    if (val >= 1_000_000) return `$${(val / 1_000_000).toFixed(2)}M`;
-    if (val >= 1_000) return `$${(val / 1_000).toFixed(2)}k`;
-    return `$${val.toFixed(2)}`;
+    if (val >= 1_000_000) return `₹${(val / 1_000_000).toFixed(2)}M`;
+    if (val >= 1_000) return `₹${(val / 1_000).toFixed(2)}k`;
+    return `₹${val.toFixed(2)}`;
   }
 
   function formatNumber(val) {
@@ -151,7 +151,7 @@ export default function Dashboard() {
                 <div className="flex flex-col">
                   <p className="text-2xl font-bold">{metric.value}</p>
                   <span className={`text-sm text-green-500`}>
-                    {"Last Month"}
+                    {"Current Month"}
                   </span>
                 </div>
               </div>

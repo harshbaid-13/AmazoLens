@@ -17,8 +17,8 @@ export default function RegionalSales() {
     d3.select(barChartRef.current).selectAll("*").remove();
 
     const margin = { top: 30, right: 90, bottom: 70, left: 120 };
-    const width = 800 - margin.left - margin.right;
-    const height = 600 - margin.top - margin.bottom;
+    const width = 440 - margin.left - margin.right;
+    const height = 520 - margin.top - margin.bottom;
 
     // Sort States by sales
     const sortedStates = [...stateData]
@@ -67,6 +67,7 @@ export default function RegionalSales() {
     svg
       .append("text")
       .attr("text-anchor", "middle")
+      .attr("font-weight", "bold")
       .attr("x", width / 2)
       .attr("y", height + margin.bottom - 10)
       .text("Sales Amount");
@@ -105,7 +106,7 @@ export default function RegionalSales() {
     //   .style("font-size", "16px")
     //   .style("font-weight", "bold")
     //   .text("Top 10 States by Sales");
-  }, [stateData]);
+  }, [stateData, htmlContent]);
 
   const fetchHtml = async (from_date, to_date) => {
     try {
@@ -151,8 +152,9 @@ export default function RegionalSales() {
 
     // Call both fetch functions and handle loading state properly
     Promise.all([
+      fetchHtml(from, to),
       fetchStateData(from, to),
-      fetchHtml("2022-04-02", "2022-04-02"),
+      // fetchHtml("2022-04-02", "2022-04-02"),
     ]).finally(() => {
       setLoading(false);
     });
@@ -161,10 +163,17 @@ export default function RegionalSales() {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-6">Regional Sales Analysis</h1>
-      <div className="flex items-center gap-2 mb-2 px-4">
-        <p>Select Timeline:</p>
-        <DatePickerWithRange onDateChange={handleDateChange} />
-      </div>
+      {loading || htmlContent != "" || stateData.length > 0 ? (
+        <div className="flex items-center gap-2 mb-2 px-4">
+          <p>Select Timeline:</p>
+          <DatePickerWithRange onDateChange={handleDateChange} />
+        </div>
+      ) : (
+        <div className="flex flex-col items-center gap-2 mb-2 px-4 h-[550px] justify-center">
+          <p className="text-2xl font-medium">Select Timeline</p>
+          <DatePickerWithRange onDateChange={handleDateChange} />
+        </div>
+      )}
 
       {loading && (
         <div className="flex justify-center items-center py-10 w-[60%] h-[500px]">
@@ -179,14 +188,14 @@ export default function RegionalSales() {
         </div>
       )}
 
-      {!loading && !error && htmlContent && (
-        <div>
-          <div className="bg-white rounded-lg shadow p-6 overflow-x-auto mb-4">
+      {!loading && !error && htmlContent != "" && stateData.length > 0 && (
+        <div className="flex gap-2">
+          <div className="bg-white rounded-lg shadow p-6 overflow-x-auto mb-4 w-2/3 h-max">
             <h2 className="text-xl font-bold mb-2">Sales Distribution Map</h2>
 
             <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
           </div>
-          <div className="bg-white rounded-lg shadow p-6 overflow-x-auto">
+          <div className="bg-white rounded-lg shadow p-6 overflow-x-auto w-1/3 h-max">
             <h2 className="text-xl font-bold mb-4">Top 10 States by Sales</h2>
             <div ref={barChartRef}></div>
           </div>
